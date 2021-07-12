@@ -13,7 +13,7 @@ const createScene = function () {
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0));
 
 
-    BABYLON.SceneLoader.ImportMesh("", "/static/", "smiley.glb", scene, function (meshes){
+    BABYLON.SceneLoader.ImportMesh("", "/static/", "100DollarNote.glb", scene, function (meshes){
         meshes[0].scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
         meshes[0].position.y = 0.5
 
