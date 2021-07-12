@@ -1,6 +1,7 @@
 const canvas = document.getElementById("renderCanvas"); // Get the canvas element
 const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
+var repeatAmount = 10
 // Write all your code in this function (Don't do anything outside of it)
 const createScene = function () {
     // Initialise scene
@@ -23,9 +24,16 @@ const createScene = function () {
     // Imports 100DollarNote from static folder
     BABYLON.SceneLoader.ImportMesh("", "/static/", "100DollarNote.glb", scene, function (Note100){
         // Sets height
-        Note100[0].position.y = 0.23
+        for (let i = 0; i < repeatAmount; i++) {
+            NewObj = Note100[0].clone("NewObj")
+            NewObj.position.y = 1
+            NewObj.position.z = i * 0.2
+            shadowGenerator.addShadowCaster(NewObj);
+        }
+        Note100[0].dispose();
+
         // Sets 100 dollar note to cast shadows
-        shadowGenerator.addShadowCaster(Note100[0]);
+
 
     });
 
