@@ -7,9 +7,10 @@ const createScene = function () {
     var scene = new BABYLON.Scene(engine);
 
     // Creates a camera
-    var camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 4, 5, new BABYLON.Vector3(0, 0, 0));
+    var camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 4, 3, new BABYLON.Vector3(0, 0, 0));
     camera.attachControl(canvas, true);
     camera.wheelPrecision = 1000;
+    camera.minZ = 0;
 
     // Creates a light
     var light = new BABYLON.DirectionalLight("light", new BABYLON.Vector3(2, -5, 1));
@@ -21,8 +22,8 @@ const createScene = function () {
 
     // Imports 100DollarNote from static folder
     BABYLON.SceneLoader.ImportMesh("", "/static/", "100DollarNote.glb", scene, function (Note100){
-        // Sets height to 0.5
-        Note100[0].position.y = 0.5
+        // Sets height
+        Note100[0].position.y = 0.23
         // Sets 100 dollar note to cast shadows
         shadowGenerator.addShadowCaster(Note100[0]);
 
@@ -30,9 +31,9 @@ const createScene = function () {
 
     // Imports 100DollarStack from static folder
     BABYLON.SceneLoader.ImportMesh("", "/static/", "100DollarStack.glb", scene, function (Stack100){
-        // Sets position to x=-1, y=2, z=0
-        Stack100[0].position = new BABYLON.Vector3(-1, 2, 0)
-        // Sets rotation to x-axis:0, y-axis:pi/3, z-axis:0
+        // Sets position
+        Stack100[0].position = new BABYLON.Vector3(-0.5, 1, 0)
+        // Sets rotation
         Stack100[0].rotation = new BABYLON.Vector3(0, Math.PI / 3, 0);
         shadowGenerator.addShadowCaster(Stack100[0]);
 
@@ -44,7 +45,7 @@ const createScene = function () {
         // shadow opacity
         groundShadowLevel: 0.5,
     });
-    envBox.setMainColor(BABYLON.Color3.Green());
+    envBox.setMainColor(new BABYLON.Color3(0.0429, 0.3375, 0.0479));
 
     return scene;
 };
