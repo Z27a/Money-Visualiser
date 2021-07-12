@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Visualiser</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script src="../static/script.js"></script>
+    <header>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+        
+        <nav class="navbar">
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+        
+
+        <div class="name">
+            <h1 class="money_visualiser">NAME</h1>
+        </div>
+        <a href="/login" class="login">Log In</a>
+        <a href="/signup" class="signup">Sign up</a>
+    </header>
+
+    <div class="main">
+        <div class="left">
+            <div class="placeholder"></div>
+            <p class="signup_prompt">Sign up to save your information!</p>
+        </div>
+        <div class="right">
+            <form action="#" class="user_selection" method="POST">
+                <label for="object">Choose an Object Container:</label>
+                <select name="object" id="object">
+                    <option value="House">House</option>
+                    <option value="Car">Car</option>
+                    <option value="Trolley">Trolley</option>
+                </select>
+                <label for="money_amount">Amount of Money:</label>
+                <div class="money_input">
+                    <span>$</span>
+                    <input type="number" id="money_amount">
+                </div>
+                <button type='submit'>Submit</button>
+            </form>
+
+            <div class="additional_info">
+                <label for="graphs">Additional Information:</label>
+                <div id="graphs"></div>
+            </div>
+
+            <a href="#" class="resources">More Resources</a>
+        </div>
+    </div>
+</body>
+</html>

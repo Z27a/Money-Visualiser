@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <link rel="stylesheet" href="../static/history.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script src="../static/script.js"></script>
+    <header>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+        
+        <nav class="menu_nav">
+            <ul>
+                <li><a href="/{{session['username']}}">Home</a></li>
+                <li><a href="#">Saving Goals</a></li>
+                <li><a href="/history_{{session['username']}}">History</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+        
+
+        <div class="name">
+            <h1 class="money_visualiser">NAME</h1>
+        </div>
+        
+
+        <input type="checkbox" id="profile-toggle" class="profile-toggle">
+        <label for="profile-toggle" class="profile-toggle-label">
+            <img src="https://picsum.photos/42/42" alt="Profile">
+        </label>
+        
+        <nav class="profile_nav">
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% if hist %}
+        {% for h in hist %}
+            <a href="/{{session['username']}}" style="text-decoration: none; color: black; display: block; padding: 0.5rem 1rem" onmouseover="this.style.textDecoration = 'underline'" onmouseout="this.style.textDecoration = 'none'">
+                <strong>Title:</strong> {{h.title}}</a>
+            <p style="color: black; display: block; padding: 0.5rem 1rem; border-bottom: 1px solid black">
+                <strong>Date and Time:</strong> {{h.date}} <strong>Amount of Money:</strong> {{h.amount}}</p><br>
+        {% endfor %}
+    {% endif %}
+
+
+</body>
+</html>

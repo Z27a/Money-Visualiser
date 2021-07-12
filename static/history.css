@@ -1,0 +1,192 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    font-family: 'Roboto', 'Arial', 'sans-serif';
+    background-image: linear-gradient(to top right, #5BA72C 50%, #D8FF6A);
+    background-attachment: fixed;
+}
+
+:root {
+    --bg_dark: #5BA72C;
+    --bg_light: #D8FF6A;
+    --button_color: #FF8A00;
+}
+
+/* header */
+
+header {
+    display: flex;
+    justify-items: flex-start;
+    align-items: center;
+    background-color: #99E16C;
+    height: 12.5%;
+}
+
+header {
+    position: relative;
+}
+
+/* navigation icon styling */
+
+.menu_nav {
+    position: absolute;
+    text-align: center;
+    top: 100%;
+    left: 0;
+    background-color: rgba(143, 124, 255, 0.96);
+    border-bottom-right-radius: 15px;
+    width: 25%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+  }
+  
+  .menu_nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .menu_nav li {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  
+  .nav-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 1.75rem;
+  }
+  
+  /* hamburger icon three lines using pseudoelements */
+  .nav-toggle-label span,
+  .nav-toggle-label span::before,
+  .nav-toggle-label span::after {
+    display: block;
+    background: black;
+    height: 2px;
+    width: 1.75rem;
+    border-radius: 2px;
+    position: relative;
+  }
+  
+  .nav-toggle-label span::before,
+  .nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+  }
+  
+  .nav-toggle-label span::before {
+    bottom: 0.65rem;
+  }
+  
+  .nav-toggle-label span::after {
+    top: 0.65rem;
+  }
+  
+  .menu_nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: color 400ms, opacity 200ms ease-in 200ms;
+  }
+  
+  .menu_nav a:hover {
+    color: black;
+  }
+  
+  .nav-toggle {
+    display: none;
+  }
+  
+  /* when checkbox is checked, the proceeding sibling nav element is styled as follows:*/
+  .nav-toggle:checked ~ .menu_nav {
+    transform: scale(1, 1);
+  }
+  
+  .nav-toggle:checked ~ .menu_nav a {
+    opacity: 1;
+  }
+
+.name {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* profile pic styling */
+
+.profile-toggle-label img {
+  background-color: #AAA;
+  border-radius: 50%;
+}
+
+.profile_nav {
+  position: absolute;
+  text-align: center;
+  top: 100%;
+  right: 0;
+  background-color: rgba(246, 189, 40, 0.96);
+  border-bottom-left-radius: 15px;
+  width: 25%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+  z-index: 100;
+}
+
+.profile_nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile_nav li {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.profile-toggle-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-right: 1.75rem;
+}
+
+.profile_nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: color 400ms, opacity 200ms ease-in 200ms;
+}
+
+.profile_nav a:hover {
+  color: black;
+}
+
+.profile-toggle {
+  display: none;
+}
+
+.profile-toggle:checked ~ .profile_nav {
+  transform: scale(1, 1);
+}
+
+.profile-toggle:checked ~ .profile_nav a {
+  opacity: 1;
+}
+
+/* main */
+
+
+

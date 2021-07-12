@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>database view</title>
+</head>
+<body>
+	{% block content %}	
+		{% for item in values %}
+			<p>Name: {{item.fullname}}, Email: {{item.country}}, Username: {{item.username}}, Password: {{item.password}}</p>
+		{% endfor %}
+	{% endblock %}
+</body>
+</html>
