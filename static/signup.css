@@ -1,0 +1,220 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    font-family: 'Roboto', 'Arial', 'sans-serif';
+    background-image: linear-gradient(to top right, #5BA72C 50%, #D8FF6A);
+    background-attachment: fixed;
+    box-sizing: border-box;
+    display: relative;
+}
+
+:root {
+    --bg_dark: #5BA72C;
+    --bg_light: #D8FF6A;
+    --button_color: #FF8A00;
+}
+
+/* header */
+
+header {
+    display: flex;
+    justify-items: flex-start;
+    align-items: center;
+    background-color: #99E16C;
+    height: 12.5%;
+}
+
+header {
+    position: relative;
+}
+
+/* navigation icon styling */
+
+nav {
+    position: absolute;
+    text-align: center;
+    top: 100%;
+    left: 0;
+    background-color: rgba(143, 124, 255, 0.88);
+    border-bottom-right-radius: 15px;
+    width: 25%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+  }
+  
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  nav li {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  
+  .nav-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 1.75rem;
+  }
+  
+  /* hamburger icon three lines using pseudoelements */
+  .nav-toggle-label span,
+  .nav-toggle-label span::before,
+  .nav-toggle-label span::after {
+    display: block;
+    background: black;
+    height: 2px;
+    width: 1.75rem;
+    border-radius: 2px;
+    position: relative;
+  }
+  
+  .nav-toggle-label span::before,
+  .nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+  }
+  
+  .nav-toggle-label span::before {
+    bottom: 0.65rem;
+  }
+  
+  .nav-toggle-label span::after {
+    top: 0.65rem;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: color 400ms, opacity 200ms ease-in 200ms;
+  }
+  
+  nav a:hover {
+    color: black;
+  }
+  
+  .nav-toggle {
+    display: none;
+  }
+  
+  /* when checkbox is checked, the proceeding sibling nav element is styled as follows:*/
+  .nav-toggle:checked ~ nav {
+    transform: scale(1, 1);
+  }
+  
+  .nav-toggle:checked ~ nav a {
+    opacity: 1;
+  }
+
+.name {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* main */
+
+.main {
+    display: flex;
+    height: 87.5%;
+}
+
+.signup_title {
+  color: white;
+  font-weight: bold;
+}
+
+label {
+  color: white;
+  font-size: 0.75em;
+}
+
+input {
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+  height: 2rem;
+  width: 15rem;
+  border: 1.5px solid black;
+  border-radius: 10px;
+}
+
+/* left */
+
+.left {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+    padding-right: 2rem;
+    margin-left: 1rem;
+    flex-grow: 1;
+}
+
+.left form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.left form select {
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    height: 2.35rem;
+    width: 15.8rem;
+    border: 1.5px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+
+.left form button {
+    align-self: center;
+    color: white;
+    background-color: var(--button_color);
+    padding: 0.65rem 6.45rem;
+    border: none;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.left form #country {
+    margin-bottom: 2rem;
+}
+
+.redirect {
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.822);
+}
+
+/* right */
+
+.right {
+  flex-grow: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url('https://image.ibb.co/cO9Lxq/login-bg.jpg');
+  background-size: cover;
+}
+
+.right .slogan{
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.right p {
+  color: white;
+}
