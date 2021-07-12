@@ -1,0 +1,4 @@
+import bpy
+import math
+obj = bpy.context.selected
+newObject = obj.copy
