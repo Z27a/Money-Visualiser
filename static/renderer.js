@@ -3,7 +3,7 @@ const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engi
 
 const floor = Math.floor
 
-var cash = 9999
+
 // Calculate objNumber using cash value
 objNumber1000 = floor(cash / 1000)
 objNumber100 = floor(cash % 1000 / 100)
