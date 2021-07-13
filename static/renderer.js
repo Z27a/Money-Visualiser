@@ -14,6 +14,11 @@ objNumber5 = floor(cash % 10 / 5)
 objNumber2 = floor(cash % 5 / 2)
 objNumber1 = floor(cash % 5 % 2)
 
+objNumber50c = floor(cash % 1 / 0.50)
+objNumber20c = floor(cash % 0.50 / 0.20)
+objNumber10c = floor(cash % 0.20 / 0.10)
+objNumber5c = floor(cash % 0.10/ 0.05)
+
 
 // Write all your code in this function (Don't do anything outside of it)
 const createScene = function () {
