@@ -9,6 +9,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <!-- style for babylonJs render canvas -->
+    <style>
+    #renderCanvas {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        touch-action: none;
+    }
+    </style>
+
+    <script> var cash = {{ cash }} </script>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+
 </head>
 <body>
     <script src="../static/script.js"></script>
@@ -50,11 +66,13 @@
 
     <div class="main">
         <div class="left">
-            <div class="placeholder"></div>
+            <div class="placeholder">
+                <canvas id="renderCanvas" touch-action="none"></canvas>
+            </div>
             <!-- <button class="save">Save to History</button> -->
         </div>
         <div class="right">
-            <form action="#" class="user_selection" method="POST">
+            <form action="/{{session['username']}}" class="user_selection" method="POST">
                 <label for="title">Title (short description):</label>
                 <input name="title" type="text" id="title">
                 <label for="object">Choose an Object Container:</label>
@@ -79,5 +97,6 @@
             <a href="#" class="resources">More Resources</a>
         </div>
     </div>
+    <script type="text/javascript" src="{{url_for('static', filename='renderer.js')}}"></script>
 </body>
 </html>
