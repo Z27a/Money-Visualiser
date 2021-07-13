@@ -241,7 +241,7 @@ header {
 
 .progress {
   background-color: rgb(240, 226, 36);
-  padding: 2rem 2rem;
+  padding: 2rem 2.6rem;
   border-radius: 20px;
   box-shadow: inset 1px 1px 3px;
   margin-top: 2rem;
