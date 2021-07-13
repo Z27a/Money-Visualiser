@@ -122,6 +122,15 @@ def view_history():
 	return render_template("view_history.html", values=History.query.all())
 
 
+@app.route('/api/goals/<action>/<usrname>/<money>', methods=('GET', 'POST'))
+def APIgoals(action=0, usrname=0, money=0):
+	if action == 'update_progress':
+		print(usrname, action, money)
+		# put database code here
+	if action == 'update_goal':
+		print(usrname, action, money)
+		# put database code here
+	return "dummy text so the server doesn't have a fit"
 
 
 if __name__ == '__main__':

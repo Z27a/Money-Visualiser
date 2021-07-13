@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
     <script src="../static/script.js"></script>
@@ -53,7 +55,7 @@
             <label for="goal">Set Savings Goal:</label><br>
             <span>$</span>
             <input type="number" id="goal">
-            <button class="set_goal" onclick="update_goal()">Set Goal!</button>
+            <button id="set_goal" class="set_goal" onclick="update_goal()">Set Goal!</button>
         </div>
 
         <div class="progress">
@@ -66,9 +68,41 @@
             <div class="money_input">
                 <span>$</span>
                 <input name="money_amount" type="number" id="money_amount">
-                <button class="add_savings" type='button' onclick="update_progress()">Add to Progress</button>
+                <button id="update_progress"  class="add_savings" type='button' onclick="update_progress()">Add to Progress</button>
             </div>
         </div>
     </div>
+
+<script>
+    // jquery function for set goal
+    $(document).ready(function(){
+        // bind the click event
+        $("#set_goal").click(function() {
+            // get data
+            var usrname = "{{session['username']}}";
+            var goal = document.getElementById('goal').value
+            // generate the url
+            var url = "/api/goals/update_progress/" + usrname +'/' + goal;
+            // the jquery call
+            $.get(url);
+        });
+     });
+
+
+    // jquery function for update progress
+    $(document).ready(function(){
+        // bind the click event
+        $("#update_progress").click(function() {
+            // get data
+            var usrname = "{{session['username']}}";
+            var money = document.getElementById('money_amount').value
+            // generate the url
+            var url = "/api/goals/update_goal/" + usrname +'/' + money;
+            // the jquery call
+            $.get(url);
+        });
+     });
+</script>
+
 </body>
 </html>
