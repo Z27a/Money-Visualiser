@@ -35,3 +35,9 @@ function update_goal() {
     document.getElementById('saving_goal').textContent=document.getElementById('progress_bar').max
     
 }
+
+function reset() {
+    document.getElementById('percent').textContent=0;
+    document.getElementById('saving_goal').textContent=1;
+    document.getElementById('progress_bar').value=0;
+}

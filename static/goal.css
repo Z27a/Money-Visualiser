@@ -239,9 +239,18 @@ header {
 
 /* progress section */
 
+.progress {
+  background-color: rgb(240, 226, 36);
+  padding: 2rem 2rem;
+  border-radius: 20px;
+  box-shadow: inset 1px 1px 3px;
+  margin-top: 2rem;
+}
+
 .progress label {
-  color: #072e1b;
+  color: #406b56;
   font-size: 1.25rem;
+  font-weight: bold;
 }
 
 #progress_bar {
@@ -250,6 +259,10 @@ header {
 }
 
 /* saved more money section */
+
+.add_to_progress {
+  margin-bottom: 1rem;
+}
 
 .add_to_progress .question {
   color: white;
@@ -287,4 +300,21 @@ header {
   border: none;
   border-radius: 30px;
   margin-left: 1.2rem;
+}
+
+/* reset button */
+
+.reset {
+  color: white;
+  font-weight: bold;
+  background-color: rgb(78, 78, 78);
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  margin-left: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+button:hover {
+  box-shadow: 0.5px 0.5px 1px #354b2b;
 }

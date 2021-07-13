@@ -68,6 +68,8 @@
                 <button id="update_progress"  class="add_savings" type='button' onclick="update_progress()">Add to Progress</button>
             </div>
         </div>
+
+        <button id="reset" class="reset" type="button" onclick="reset()">Reset</button>
     </div>
 
 <script>
@@ -95,6 +97,19 @@
             var money = document.getElementById('money_amount').value
             // generate the url
             var url = "/api/goals/update_progress/" + usrname +'/' + money;
+            // the jquery call
+            $.get(url);
+        });
+     });
+
+    // jquery function for update progress
+    $(document).ready(function(){
+        // bind the click event
+        $("#reset").click(function() {
+            // get data
+            var usrname = "{{session['username']}}";
+            // generate the url
+            var url = "/api/goals/reset/" + usrname +'/' + '0';
             // the jquery call
             $.get(url);
         });

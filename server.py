@@ -143,6 +143,13 @@ def APIgoals(action=0, usrname=0, money=0):
 		if found_user:
 			found_user.s_progress = found_user.s_progress + int(money)
 			db.session.commit()
+	if action == 'reset':
+		# print(usrname, action, money)
+		found_user = Users.query.filter_by(username=usrname).first()
+		if found_user:
+			found_user.s_progress = 0
+			found_user.s_goal = 1
+			db.session.commit()
 
 	return "dummy text so the server doesn't have a fit"
 
