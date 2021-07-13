@@ -36,9 +36,7 @@
         
         <nav class="menu_nav">
             <ul>
-                <li><a href="/{{session['username']}}">Home</a></li>
-                <li><a href="/{{session['username']}}_goal">Saving Goals</a></li>
-                <li><a href="/history_{{session['username']}}">History</a></li>
+                <li><a href="/{{session['username']}}/0">Home</a></li>
                 <li><a href="#">Settings</a></li>
             </ul>
         </nav>
@@ -57,8 +55,8 @@
         <nav class="profile_nav">
             <ul>
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="/{{session['username']}}_goal">Saving Goals</a></li>
+                <li><a href="/history_{{session['username']}}">History</a></li>
                 <li><a href="/logout_{{session['username']}}">Logout</a></li>
             </ul>
         </nav>

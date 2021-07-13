@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="../static/goal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">    
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
@@ -22,9 +21,7 @@
         
         <nav class="menu_nav">
             <ul>
-                <li><a href="/{{session['username']}}">Home</a></li>
-                <li><a href="#">Saving Goals</a></li>
-                <li><a href="/history_{{session['username']}}">History</a></li>
+                <li><a href="/{{session['username']}}/0">Home</a></li>
                 <li><a href="#">Settings</a></li>
             </ul>
         </nav>
@@ -43,9 +40,9 @@
         <nav class="profile_nav">
             <ul>
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="/{{session['username']}}_goal">Saving Goals</a></li>
+                <li><a href="/history_{{session['username']}}">History</a></li>
+                <li><a href="/logout_{{session['username']}}">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -55,12 +52,12 @@
             <label for="goal">Set Savings Goal:</label><br>
             <span>$</span>
             <input type="number" id="goal">
-            <button id="set_goal" class="set_goal" onclick="update_goal()">Set Goal!</button>
+            <button id="set_goal" class="set_goal" onclick="update_goal();">Set Goal!</button>
         </div>
 
         <div class="progress">
-            <label for="progress_bar">Progress: <span id="percent">75</span>% towards goal of <span id="saving_goal">$100</span> saved</label><br>  <!-- python code placeholders to display percentage -->
-            <progress id="progress_bar" value="75" max="100">75%</progress>
+            <label for="progress_bar">Progress: <span id="percent">{{var_percent}}</span>% towards goal of $<span id="saving_goal">{{var_goal}}</span> saved</label><br>  <!-- python code placeholders to display percentage -->
+            <progress id="progress_bar" value={{var_progress}} max={{var_goal}}>{{var_progress}}</progress>
         </div>
 
         <div class="add_to_progress">
@@ -82,7 +79,7 @@
             var usrname = "{{session['username']}}";
             var goal = document.getElementById('goal').value
             // generate the url
-            var url = "/api/goals/update_progress/" + usrname +'/' + goal;
+            var url = "/api/goals/update_goal/" + usrname +'/' + goal;
             // the jquery call
             $.get(url);
         });
@@ -97,7 +94,7 @@
             var usrname = "{{session['username']}}";
             var money = document.getElementById('money_amount').value
             // generate the url
-            var url = "/api/goals/update_goal/" + usrname +'/' + money;
+            var url = "/api/goals/update_progress/" + usrname +'/' + money;
             // the jquery call
             $.get(url);
         });

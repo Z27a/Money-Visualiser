@@ -16,13 +16,17 @@ class Users(db.Model):
 	country = db.Column(db.String(50))
 	username = db.Column(db.String(100), unique=True, nullable=False)
 	password = db.Column(db.String(100))
+	s_goal = db.Column(db.Integer)
+	s_progress = db.Column(db.Integer)
 	history = db.relationship('History', backref='account_holder', lazy=True)
 
-	def __init__(self, fullname, country, username, password):
+	def __init__(self, fullname, country, username, password, s_goal, s_progress):
 		self.fullname = fullname
 		self.country = country
 		self.username = username
 		self.password = password
+		self.s_goal = s_goal
+		self.s_progress = s_progress
 
 class History(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
@@ -67,7 +71,7 @@ def signup():
 		country = request.form["country"]
 		user = request.form["username"]
 		pwd = request.form["password"]
-		usr = Users(fullname=fullname, country=country, username=user, password=pwd)
+		usr = Users(fullname=fullname, country=country, username=user, password=pwd, s_goal=1, s_progress=0)
 		db.session.add(usr)
 		db.session.commit()
 		return redirect(url_for('login'))
@@ -104,7 +108,10 @@ def history(usrname):
 
 @app.route("/<usrname>_goal")
 def goal(usrname):
-	return render_template('goal.html')
+	var_goal = Users.query.filter_by(username=usrname).first().s_goal
+	var_progress = Users.query.filter_by(username=usrname).first().s_progress
+	var_percent = format((var_progress / var_goal) * 100, ".2f")
+	return render_template('goal.html', var_goal=var_goal, var_progress=var_progress, var_percent=var_percent)
 
 @app.route("/logout_<usrname>")
 def logout(usrname):
@@ -124,12 +131,19 @@ def view_history():
 
 @app.route('/api/goals/<action>/<usrname>/<money>', methods=('GET', 'POST'))
 def APIgoals(action=0, usrname=0, money=0):
-	if action == 'update_progress':
-		print(usrname, action, money)
-		# put database code here
 	if action == 'update_goal':
-		print(usrname, action, money)
-		# put database code here
+		# print(usrname, action, money)
+		found_user = Users.query.filter_by(username=usrname).first()
+		if found_user:
+			found_user.s_goal = int(money)
+			db.session.commit()
+	if action == 'update_progress':
+		# print(usrname, action, money)
+		found_user = Users.query.filter_by(username=usrname).first()
+		if found_user:
+			found_user.s_progress = found_user.s_progress + int(money)
+			db.session.commit()
+
 	return "dummy text so the server doesn't have a fit"
 
 

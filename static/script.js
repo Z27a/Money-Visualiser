@@ -30,8 +30,8 @@ function update_progress() {
 function update_goal() {
     document.getElementById('progress_bar').max = document.getElementById('goal').value;
 
-    new_percent = (document.getElementById('progress_bar').value / document.getElementById('progress_bar').max) * 100
+    new_percent = ((document.getElementById('progress_bar').value / document.getElementById('progress_bar').max) * 100).toFixed(2)
     document.getElementById('percent').textContent=new_percent;
     document.getElementById('saving_goal').textContent=document.getElementById('progress_bar').max
-
+    
 }
