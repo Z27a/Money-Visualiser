@@ -18,13 +18,34 @@
         border-radius: 15px;
         touch-action: none;
     }
+    #myChart {
+        width: 100%;
+        height: 100%;
+    }
     </style>
 
     <script> var cash = {{ cash }} </script>
+    <script>
+        var dates = {{ dates }}
+        var formattedDates = []
+        for (let i = 0; i < dates.length; i++) {
+          formattedDates.push(new Date(dates[i] * 1000));
+        }
+        var goodDates = []
+        for (let i = 0; i < dates.length; i++) {
+          goodDates.push(formattedDates[i].getDate()+
+          "/"+(formattedDates[i].getMonth()+1)+
+          "/"+formattedDates[i].getFullYear()+
+          " "+formattedDates[i].getHours()+
+          ":"+formattedDates[i].getMinutes());
+        }
+    </script>
+    <script> var amounts = {{ amounts }} </script>
+
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
     <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <script src="../static/script.js"></script>
@@ -95,12 +116,15 @@
 
             <div class="additional_info">
                 <label for="graphs">Additional Information:</label>
-                <div id="graphs"></div>
+                <div id="graphs">
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
 
             <a href="#" class="resources">More Resources</a>
         </div>
     </div>
     <script type="text/javascript" src="{{url_for('static', filename='renderer.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='graphs.js')}}"></script>
 </body>
 </html>
