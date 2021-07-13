@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History</title>
-    <link rel="stylesheet" href="../static/history.css">
+    <title>Saving Goals</title>
+    <link rel="stylesheet" href="../static/goal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -48,15 +48,27 @@
         </nav>
     </header>
 
-    {% if hist %}
-        {% for h in hist %}
-            <a href="/{{session['username']}}/{{h.amount}}" style="text-decoration: none; color: black; display: block; padding: 0.5rem 1rem" onmouseover="this.style.textDecoration = 'underline'" onmouseout="this.style.textDecoration = 'none'">
-                <strong>Title:</strong> {{h.title}}</a>
-            <p style="color: black; display: block; padding: 0.5rem 1rem; border-bottom: 1px solid black">
-                <strong>Date and Time:</strong> {{h.date}} <strong>Amount of Money:</strong> {{h.amount}}</p><br>
-        {% endfor %}
-    {% endif %}
+    <div class="main">
+        <div class="goal_input">
+            <label for="goal">Set Savings Goal:</label><br>
+            <span>$</span>
+            <input type="number" id="goal">
+            <button class="set_goal">Set Goal!</button>
+        </div>
 
+        <div class="progress">
+            <label for="progress_bar">Placeholder Label</label><br>  <!-- python code placeholders to display percentage -->
+            <progress id="progress_bar" value="75" max="100">75%</progress>
+        </div>
 
+        <div class="add_to_progress">
+            <p class="question">Saved More Money?</p>
+            <div class="money_input">
+                <span>$</span>
+                <input name="money_amount" type="number" id="money_amount">
+                <button class="add_savings" type='button' onclick="update_progress()">Add to Progress</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

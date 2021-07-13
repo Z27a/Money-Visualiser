@@ -43,7 +43,7 @@
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Profile</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="/logout_{{session['username']}}">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -66,7 +66,11 @@
                 <label for="money_amount">Amount of Money:</label>
                 <div class="money_input">
                     <span>$</span>
-                    <input name="money_amount" type="number" id="money_amount">
+                    {% if amt %}
+                        <input name="money_amount" type="number" id="money_amount" value={{amt}}>
+                    {% else %}
+                        <input name="money_amount" type="number" id="money_amount">
+                    {% endif %}
                 </div>
                 <button type='submit'>Submit</button>
             </form>
