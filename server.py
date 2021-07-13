@@ -50,7 +50,7 @@ def login():
 		found_user = Users.query.filter_by(username=user).first()
 		if found_user and pwd == found_user.password:
 			session['username'] = user
-			return redirect(url_for('account_page', usrname=user))
+			return redirect(url_for('account_page', usrname=user, amt=0))
 		else:
 			flash('Incorrect username or password', 'error')
 			return render_template('login.html')
@@ -71,8 +71,8 @@ def signup():
 	else:
 		return render_template('signup.html')
 
-@app.route("/<usrname>", methods=['POST', 'GET'])
-def account_page(usrname):
+@app.route("/<usrname>/<amt>", methods=['POST', 'GET'])
+def account_page(usrname, amt=0):
 	if request.method == 'POST':
 		user = usrname
 		if request.form["title"]:
@@ -87,7 +87,7 @@ def account_page(usrname):
 		return render_template('account_page.html')
 	else:
 		if usrname in session['username']:
-			return render_template('account_page.html')
+			return render_template('account_page.html', amt=amt)
 		else:
 			flash('You are not logged in', 'error')
 			return redirect(url_for('login'))
