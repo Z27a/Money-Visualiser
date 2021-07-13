@@ -19,7 +19,8 @@ objNumber20c = floor(cash % 0.50 / 0.20)
 objNumber10c = floor(cash % 0.20 / 0.10)
 objNumber5c = floor(cash % 0.10/ 0.05)
 
-
+totalNotesNumber = objNumber1000 + objNumber100 + objNumber50 + objNumber20 + objNumber10 + objNumber5
+totalCoinsNumber = objNumber50c + objNumber20c + objNumber10c + objNumber5c
 // Write all your code in this function (Don't do anything outside of it)
 const createScene = function () {
     // Initialise scene
@@ -39,41 +40,28 @@ const createScene = function () {
     shadowGenerator.useBlurExponentialShadowMap = true;
     shadowGenerator.usePercentageCloserFiltering = true;
 
-
-    // Imports 100DollarStack from static folder
-    BABYLON.SceneLoader.ImportMesh("", "/static/", "100DollarStack.glb", scene, function (Stack100){
-        for (let i = 0; i < objNumber1000; i++) {
-            NewObj = Stack100[0].clone("NewObj")
-            NewObj.position.x = 0
-            NewObj.position.y = 1
-            NewObj.position.z = i * 0.1
-            // Sets 1000 dollar note to cast shadows
-            shadowGenerator.addShadowCaster(NewObj);
-        }
-        Stack100[0].dispose();
-
-    });
-
-
-    // Imports 100DollarNote from static folder
-    BABYLON.SceneLoader.ImportMesh("", "/static/", "100DollarNote.glb", scene, function (Note100){
-        //array
-        for (let i = 0; i < objNumber100; i++) {
-            NewObj = Note100[0].clone("NewObj")
-            NewObj.position.x = 0.2
-            NewObj.position.y = 1
-            NewObj.position.z = i * 0.1
-            // Sets 100 dollar note to cast shadows
-            shadowGenerator.addShadowCaster(NewObj);
-        }
-        Note100[0].dispose();
-
-
-
-
-    });
-
-
+    // Function that arranges objects in a rectange. Requires model file, number of objects and offset.
+    function renderObject(modelfile, objNumber, xOffset, yOffset, zOffset) {
+        BABYLON.SceneLoader.ImportMesh("", "/static/", modelfile, scene, function (model) {
+            for (let i = 0; i < objNumber; i++) {
+                NewObj = model[0].clone("NewObj")
+                NewObj.position.x = xOffset
+                NewObj.position.y = yOffset
+                NewObj.position.z = i * 0.1 + zOffset
+                // Sets object to cast shadows
+                shadowGenerator.addShadowCaster(NewObj);
+            }
+            model[0].dispose(); // Delete original object
+        });
+    }
+    renderObject("100DollarStack.glb",objNumber1000,0,0,0)
+    renderObject("100DollarNote.glb",objNumber100,0.2,0,0)
+    renderObject("50DollarNote.glb",objNumber50,0.4,0,0)
+    renderObject("20DollarNote.glb",objNumber20,0.6,0,0)
+    renderObject("10DollarNote.glb",objNumber10,0.8,0,0)
+    renderObject("5DollarNote.glb",objNumber5,1,0,0)
+    renderObject("2DollarCoin.glb",objNumber2,0,0,-0.03)
+    renderObject("1DollarCoin.glb",objNumber1,0,0,-0.02)
 
 
     // Creates environment box
