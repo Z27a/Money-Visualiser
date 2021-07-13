@@ -3,7 +3,6 @@ const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engi
 
 const floor = Math.floor
 
-
 // Calculate objNumber using cash value
 objNumber1000 = floor(cash / 1000)
 objNumber100 = floor(cash % 1000 / 100)
@@ -18,9 +17,30 @@ objNumber50c = floor(cash % 1 / 0.50)
 objNumber20c = floor(cash % 0.50 / 0.20)
 objNumber10c = floor(cash % 0.20 / 0.10)
 objNumber5c = floor(cash % 0.10/ 0.05)
-
+// total notes and coins
 totalNotesNumber = objNumber1000 + objNumber100 + objNumber50 + objNumber20 + objNumber10 + objNumber5
 totalCoinsNumber = objNumber50c + objNumber20c + objNumber10c + objNumber5c
+//Find rows and columns of notes
+NRow = 0
+NCol = 0
+HighestRemainder = 0
+
+for (i = floor(Math.sqrt(totalNotesNumber)); i >= 1; i += -1) {
+    if (totalNotesNumber / i <= 2 * i) {
+        if (totalNotesNumber % i == 0) {
+            NRow = i;
+            break;
+        }
+        else if (totalNotesNumber/i - floor(totalNotesNumber/i ) > HighestRemainder) {
+            HighestRemainder = (totalNotesNumber/i - floor(totalNotesNumber/i));
+            NRow = i;
+        }
+    }
+}
+if (NRow > 0) {
+    NCol = Math.ceil(totalNotesNumber / NRow);
+}
+
 // Write all your code in this function (Don't do anything outside of it)
 const createScene = function () {
     // Initialise scene
@@ -41,27 +61,42 @@ const createScene = function () {
     shadowGenerator.usePercentageCloserFiltering = true;
 
     // Function that arranges objects in a rectange. Requires model file, number of objects and offset.
-    function renderObject(modelfile, objNumber, xOffset, yOffset, zOffset) {
+    function renderObject(modelfile, objNumber, Row, Column, Offset) {
         BABYLON.SceneLoader.ImportMesh("", "/static/", modelfile, scene, function (model) {
-            for (let i = 0; i < objNumber; i++) {
-                NewObj = model[0].clone("NewObj")
-                NewObj.position.x = xOffset
-                NewObj.position.y = yOffset
-                NewObj.position.z = i * 0.1 + zOffset
-                // Sets object to cast shadows
-                shadowGenerator.addShadowCaster(NewObj);
+            let k = 0;
+            for (let i = Offset[0]; i < Row; i++) {
+                for (let j = Offset[2]; j < Column; j++) {
+                    if (k < objNumber) {
+                        NewObj = model[0].clone("NewObj")
+                        NewObj.position = new BABYLON.Vector3(i*0.2, 1, j * 0.2);
+
+                        // Sets object to cast shadows
+                        shadowGenerator.addShadowCaster(NewObj);
+                        k++;
+                        Offset = [0,0,0]
+                    }
+                    else {
+                        model[0].dispose(); // Delete original object
+                        CurrentPosition = [i * 0.2, 1 ,j * 0.2]
+                        return CurrentPosition;
+                    }
+                }
+
             }
             model[0].dispose(); // Delete original object
+            return CurrentPosition;
         });
     }
-    renderObject("100DollarStack.glb",objNumber1000,0,0,0)
-    renderObject("100DollarNote.glb",objNumber100,0.2,0,0)
-    renderObject("50DollarNote.glb",objNumber50,0.4,0,0)
-    renderObject("20DollarNote.glb",objNumber20,0.6,0,0)
-    renderObject("10DollarNote.glb",objNumber10,0.8,0,0)
-    renderObject("5DollarNote.glb",objNumber5,1,0,0)
-    renderObject("2DollarCoin.glb",objNumber2,0,0,-0.03)
-    renderObject("1DollarCoin.glb",objNumber1,0,0,-0.02)
+    //render objects
+
+    CPos = renderObject("100DollarStack.glb",objNumber1000,NRow,NCol,[0,0,0])
+    CPos = renderObject("100DollarNote.glb",objNumber100,NRow,NCol,CPos)
+    CurrentPosition = renderObject("50DollarNote.glb",objNumber50,NRow,CPos)
+    CurrentPosition = renderObject("20DollarNote.glb",objNumber20,NRow,NCol,CurrentPosition)
+    CurrentPosition = renderObject("10DollarNote.glb",objNumber10,NRow,NCol,CurrentPosition)
+    CurrentPosition = renderObject("5DollarNote.glb",objNumber5,NRow,NCol,CurrentPosition)
+    CurrentPosition = renderObject("2DollarCoin.glb",objNumber2,2,1,[0,0,0])
+    CurrentPosition = renderObject("1DollarCoin.glb",objNumber1,2,1,[0,0,0])
 
 
     // Creates environment box
