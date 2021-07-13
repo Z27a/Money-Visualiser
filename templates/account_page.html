@@ -37,7 +37,7 @@
         <nav class="menu_nav">
             <ul>
                 <li><a href="/{{session['username']}}">Home</a></li>
-                <li><a href="#">Saving Goals</a></li>
+                <li><a href="/{{session['username']}}_goal">Saving Goals</a></li>
                 <li><a href="/history_{{session['username']}}">History</a></li>
                 <li><a href="#">Settings</a></li>
             </ul>
@@ -72,7 +72,7 @@
             <!-- <button class="save">Save to History</button> -->
         </div>
         <div class="right">
-            <form action="/{{session['username']}}" class="user_selection" method="POST">
+            <form action="/{{session['username']}}/0" class="user_selection" method="POST">
                 <label for="title">Title (short description):</label>
                 <input name="title" type="text" id="title">
                 <label for="object">Choose an Object Container:</label>

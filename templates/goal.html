@@ -53,11 +53,11 @@
             <label for="goal">Set Savings Goal:</label><br>
             <span>$</span>
             <input type="number" id="goal">
-            <button class="set_goal">Set Goal!</button>
+            <button class="set_goal" onclick="update_goal()">Set Goal!</button>
         </div>
 
         <div class="progress">
-            <label for="progress_bar">Placeholder Label</label><br>  <!-- python code placeholders to display percentage -->
+            <label for="progress_bar">Progress: <span id="percent">75</span>% towards goal of <span id="saving_goal">$100</span> saved</label><br>  <!-- python code placeholders to display percentage -->
             <progress id="progress_bar" value="75" max="100">75%</progress>
         </div>
 

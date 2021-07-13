@@ -91,7 +91,7 @@ def account_page(usrname, amt=0):
 	else:
 		if usrname in session['username']:
 			amount = 1
-			return render_template('account_page.html', cash=amount)
+			return render_template('account_page.html', amt=amt, cash=amount)
 		else:
 			flash('You are not logged in', 'error')
 			return redirect(url_for('login'))
@@ -102,6 +102,9 @@ def history(usrname):
 	hist = History.query.filter_by(user_id=user.id)
 	return render_template('history.html', hist=hist)
 
+@app.route("/<usrname>_goal")
+def goal(usrname):
+	return render_template('goal.html')
 
 @app.route("/logout_<usrname>")
 def logout(usrname):

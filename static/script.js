@@ -17,16 +17,21 @@
 //             console.log(document.getElementById('progress_bar').value);
 //         }, 100)
 //     }
-//     // document.getElementById('progress_bar').value = document.getElementById('progress_bar').value + parseInt(document.getElementById('money_amount').value)
+    
 // }
 
 
-function test() {
-    document.getElementById('money_amount').value = '10';
+function update_progress() {
+    document.getElementById('progress_bar').value = document.getElementById('progress_bar').value + parseInt(document.getElementById('money_amount').value)
+    new_percent = (document.getElementById('progress_bar').value / document.getElementById('progress_bar').max) * 100
+    document.getElementById('percent').textContent=new_percent;
 }
 
-function update_progress() {
-    for (var i=0; i < parseInt(document.getElementById('money_amount').value); i++) {
-        setTimeout(() => {document.getElementById('progress_bar').value = document.getElementById('progress_bar').value + 1;}, 2000);
-    }
+function update_goal() {
+    document.getElementById('progress_bar').max = document.getElementById('goal').value;
+
+    new_percent = (document.getElementById('progress_bar').value / document.getElementById('progress_bar').max) * 100
+    document.getElementById('percent').textContent=new_percent;
+    document.getElementById('saving_goal').textContent=document.getElementById('progress_bar').max
+
 }
