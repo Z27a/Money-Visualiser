@@ -14,9 +14,11 @@ objNumber2 = floor(cash % 5 / 2)
 objNumber1 = floor(cash % 5 % 2)
 
 objNumber50c = floor(cash % 1 / 0.50)
-objNumber20c = floor(cash % 0.50 / 0.20)
-objNumber10c = floor(cash % 0.20 / 0.10)
-objNumber5c = floor(cash % 0.10/ 0.05)
+objNumber20c = floor(cash*100 % 50 / 20)
+objNumber10c = floor(cash*100 % 20 / 10)
+objNumber5c = floor(cash*100 % 10/ 5)
+
+
 // total notes and coins
 totalNotesNumber = objNumber1000 + objNumber100 + objNumber50 + objNumber20 + objNumber10 + objNumber5
 totalCoinsNumber = objNumber50c + objNumber20c + objNumber10c + objNumber5c
@@ -43,6 +45,11 @@ if (NRow > 0) {
 
 // Write all your code in this function (Don't do anything outside of it)
 const createScene = function () {
+    // Array of number of objects with corresponding 3D object file names
+    const objNumber = [objNumber1000,objNumber100,objNumber50,objNumber20,objNumber10,objNumber5,objNumber2,objNumber1,objNumber50c,objNumber20c,objNumber10c,objNumber5c];
+
+    const FileNames = ["100DollarStack.glb","100DollarNote.glb","50DollarNote.glb","20DollarNote.glb","10DollarNote.glb","5DollarNote.glb", "2DollarCoin.glb","1DollarCoin.glb","50CentCoin.glb","20CentCoin.glb","10CentCoin.glb","5CentCoin.glb"];
+
     // Initialise scene
     var scene = new BABYLON.Scene(engine);
 
@@ -60,43 +67,23 @@ const createScene = function () {
     shadowGenerator.useBlurExponentialShadowMap = true;
     shadowGenerator.usePercentageCloserFiltering = true;
 
-    // Function that arranges objects in a rectange. Requires model file, number of objects and offset.
-    function renderObject(modelfile, objNumber, Row, Column, Offset) {
-        BABYLON.SceneLoader.ImportMesh("", "/static/", modelfile, scene, function (model) {
-            let k = 0;
-            for (let i = Offset[0]; i < Row; i++) {
-                for (let j = Offset[2]; j < Column; j++) {
-                    if (k < objNumber) {
-                        NewObj = model[0].clone("NewObj")
-                        NewObj.position = new BABYLON.Vector3(i*0.2, 1, j * 0.2);
+    objx = 0, objz = 0
 
-                        // Sets object to cast shadows
-                        shadowGenerator.addShadowCaster(NewObj);
-                        k++;
-                        Offset = [0,0,0]
+    for (let l = 0; l < objNumber.length; l++) {
+        BABYLON.SceneLoader.ImportMesh("", "/static/", FileNames[l], scene, function (model) {
+            for (k = 0; k < objNumber[l]; k++) {
+                    NewObj = model[0].clone("NewObj")
+                    NewObj.position = new BABYLON.Vector3(objx * 0.2, 1, objz * 0.1);
+                    // Sets object to cast shadows
+                    shadowGenerator.addShadowCaster(NewObj);
+                    objx++;
+                    if (objx > NRow) {
+                        objx = 0, objz++;
                     }
-                    else {
-                        model[0].dispose(); // Delete original object
-                        CurrentPosition = [i * 0.2, 1 ,j * 0.2]
-                        return CurrentPosition;
-                    }
-                }
-
             }
             model[0].dispose(); // Delete original object
-            return CurrentPosition;
         });
     }
-    //render objects
-
-    CPos = renderObject("100DollarStack.glb",objNumber1000,NRow,NCol,[0,0,0])
-    CPos = renderObject("100DollarNote.glb",objNumber100,NRow,NCol,CPos)
-    CurrentPosition = renderObject("50DollarNote.glb",objNumber50,NRow,CPos)
-    CurrentPosition = renderObject("20DollarNote.glb",objNumber20,NRow,NCol,CurrentPosition)
-    CurrentPosition = renderObject("10DollarNote.glb",objNumber10,NRow,NCol,CurrentPosition)
-    CurrentPosition = renderObject("5DollarNote.glb",objNumber5,NRow,NCol,CurrentPosition)
-    CurrentPosition = renderObject("2DollarCoin.glb",objNumber2,2,1,[0,0,0])
-    CurrentPosition = renderObject("1DollarCoin.glb",objNumber1,2,1,[0,0,0])
 
 
     // Creates environment box
