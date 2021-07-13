@@ -56,6 +56,8 @@ def getGraphData():
     results = cur.execute(sql).fetchall()
     dates = [int(time.mktime(time.strptime(i[0].split('.', 1)[0], '%Y-%m-%d %H:%M:%S'))) for i in results]
     amounts = [i[1] for i in results]
+    # disconnect again
+    conn = None
     return dates, amounts
 
 

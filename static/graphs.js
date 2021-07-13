@@ -1,3 +1,8 @@
+var averages = []
+for (let i = 0; i < amounts.length; i++) {
+  averages.push(1425);
+}
+
 const labels = goodDates;
 const data = {
     labels: labels,
@@ -10,7 +15,7 @@ const data = {
         label: 'Aus Average Weekly Spending',
         backgroundColor: 'rgb(255, 138, 0)',
         borderColor: 'rgb(255, 138, 0)',
-        data: [1425, 1425, 1425, 1425, 1425],
+        data: averages,
     }]
 };
 
