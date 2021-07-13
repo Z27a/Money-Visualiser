@@ -15,11 +15,12 @@
     #renderCanvas {
         width: 100%;
         height: 100%;
+        border-radius: 15px;
         touch-action: none;
     }
     </style>
 
-    <script var cash = {{cash}}></script>
+    <script> var cash = {{ cash }} </script>
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
     <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
@@ -59,7 +60,7 @@
             <p class="signup_prompt">Sign up to save your information!</p>
         </div>
         <div class="right">
-            <form action="#" class="user_selection" method="POST">
+            <form action="/" class="user_selection" method="POST">
                 <label for="object">Choose an Object Container:</label>
                 <select name="object" id="object">
                     <option value="House">House</option>
@@ -69,7 +70,7 @@
                 <label for="money_amount">Amount of Money:</label>
                 <div class="money_input">
                     <span>$</span>
-                    <input type="number" id="money_amount">
+                    <input type="number" name="money_amount">
                 </div>
                 <button type='submit'>Submit</button>
             </form>

@@ -38,9 +38,12 @@ class History(db.Model):
 	def __repr__(self):
 		return f"History('{self.title}', '{self.date}', '{self._object}', '{self.amount}')"
 
-@app.route("/")
+@app.route("/", methods=['POST', 'GET'])
 def home():
-	return render_template('index.html')
+	money_amount = 1
+	if request.method == 'POST':
+		money_amount = request.form['money_amount']
+	return render_template('index.html', cash = money_amount)
 
 @app.route("/login", methods=['POST', 'GET'])
 def login():
@@ -84,10 +87,11 @@ def account_page(usrname, amt=0):
 		save1 = History(title=title, _object=obj, amount=amount, account_holder=Users.query.filter_by(username=usrname).first())
 		db.session.add(save1)
 		db.session.commit()
-		return render_template('account_page.html')
+		return render_template('account_page.html', cash=amount)
 	else:
 		if usrname in session['username']:
-			return render_template('account_page.html', amt=amt)
+			amount = 1
+			return render_template('account_page.html', cash=amount)
 		else:
 			flash('You are not logged in', 'error')
 			return redirect(url_for('login'))
