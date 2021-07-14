@@ -45,7 +45,7 @@
         
 
         <div class="name">
-            <h1 class="money_visualiser">NAME</h1>
+            <h1 class="money_visualiser" style="font-family: 'palatino'">CA$H VIEW</h1>
         </div>
         <a href="/login" class="login">Log In</a>
         <a href="/signup" class="signup">Sign up</a>
@@ -60,23 +60,24 @@
             <a href="/signup" class="signup_prompt">Sign up to save your information!</a>
         </div>
         <div class="right">
-            <form action="/" class="user_selection" method="POST">
-                <label for="object">Choose an Object Container:</label>
-                <select name="object" id="object">
-                    <option value="House">House</option>
-                    <option value="Car">Car</option>
-                    <option value="Trolley">Trolley</option>
-                </select>
-                <label for="money_amount">Amount of Money:</label>
-                <div class="money_input">
-                    <span>$</span>
-                    <input type="number" name="money_amount">
-                </div>
-                <button type='submit'>Submit</button>
-            </form>
-
-
-            <a href="#" class="resources">More Resources</a>
+            <div class="wrapper">
+                <form action="/" class="user_selection" method="POST">
+                    <label for="object">Choose an Object Container:</label>
+                    <select name="object" id="object">
+                        <option value="House">House</option>
+                        <option value="Car">Car</option>
+                        <option value="Trolley">Trolley</option>
+                    </select>
+                    <label for="money_amount">Amount of Money:</label>
+                    <div class="money_input">
+                        <span>$</span>
+                        <input type="number" name="money_amount">
+                    </div>
+                    <button type='submit'>GO!</button>
+                </form>
+    
+                <a href="#" class="resources">More Resources</a>
+            </div>
         </div>
     </div>
 

@@ -67,7 +67,7 @@
         
 
         <div class="name">
-            <h1 class="money_visualiser">NAME</h1>
+            <h1 class="money_visualiser" style="font-family: 'palatino'">CA$H VIEW</h1>
         </div>
         
 
@@ -94,30 +94,30 @@
             <!-- <button class="save">Save to History</button> -->
         </div>
         <div class="right">
-            <form action="/{{session['username']}}/0" class="user_selection" method="POST">
-                <label for="title">Title (short description):</label>
-                <input name="title" type="text" id="title">
-                <label for="object">Choose an Object Container:</label>
-                <select name="object" id="object">
-                    <option value="House">House</option>
-                    <option value="Car">Car</option>
-                    <option value="Trolley">Trolley</option>
-                </select>
-                <label for="money_amount">Amount of Money:</label>
-                <div class="money_input">
-                    <span>$</span>
-                    {% if amt %}
-                        <input name="money_amount" type="number" id="money_amount" value={{amt}}>
-                    {% else %}
-                        <input name="money_amount" type="number" id="money_amount">
-                    {% endif %}
-                </div>
-                <button type='submit'>Submit</button>
-            </form>
-
-            
-
-            <a href="#" class="resources">More Resources</a>
+            <div class="wrapper">
+                <form action="/{{session['username']}}/0" class="user_selection" method="POST">
+                    <label for="title">Title (short description):</label>
+                    <input name="title" type="text" id="title">
+                    <label for="object">Choose an Object Container:</label>
+                    <select name="object" id="object">
+                        <option value="House">House</option>
+                        <option value="Car">Car</option>
+                        <option value="Trolley">Trolley</option>
+                    </select>
+                    <label for="money_amount">Amount of Money:</label>
+                    <div class="money_input">
+                        <span>$</span>
+                        {% if amt %}
+                            <input name="money_amount" type="number" id="money_amount" value={{amt}}>
+                        {% else %}
+                            <input name="money_amount" type="number" id="money_amount">
+                        {% endif %}
+                    </div>
+                    <button type='submit'>GO!</button>
+                </form>
+    
+                <a href="#" class="resources">More Resources</a>
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="{{url_for('static', filename='renderer.js')}}"></script>

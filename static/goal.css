@@ -366,7 +366,7 @@ button:hover {
 .placeholder {
   background-color: rgba(0, 0, 0, 70%);
   border-radius: 18px;
-  height: 55vh;
+  height: 60vh;
   width: 35vw;
   box-shadow: 2px 3px 1px #007e15;
   margin: 3rem 0;
@@ -384,7 +384,7 @@ button:hover {
 
 .obj_container {
   position: absolute;
-  bottom: 12vh;
+  bottom: 5vh;
   left: 69vw;
 }
 
