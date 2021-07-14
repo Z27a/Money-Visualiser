@@ -58,8 +58,8 @@ def getGraphData():
     cur = conn.cursor()
     sql = f"SELECT date, amount FROM history ORDER BY date desc LIMIT 5"
     results = cur.execute(sql).fetchall()
-    dates = [int(time.mktime(time.strptime(i[0].split('.', 1)[0], '%Y-%m-%d %H:%M:%S'))) for i in results]
-    amounts = [i[1] for i in results]
+    dates = [int(time.mktime(time.strptime(i[0].split('.', 1)[0], '%Y-%m-%d %H:%M:%S'))) for i in results][::-1]
+    amounts = [i[1] for i in results][::-1]
     # disconnect again
     conn = None
     return dates, amounts
@@ -134,7 +134,10 @@ def account_page(usrname, amt=0):
 def history(usrname):
     user = Users.query.filter_by(username=usrname).first()
     hist = History.query.filter_by(user_id=user.id)
-    return render_template('history.html', hist=hist)
+    graphData = getGraphData()
+    dates = graphData[0]
+    amounts=graphData[1]
+    return render_template('history.html', hist=hist, dates=dates, amounts=amounts)
 
 @app.route("/<usrname>_goal")
 def goal(usrname):

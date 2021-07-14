@@ -229,8 +229,9 @@ header {
 .right {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding-top: 4rem;
+    /* padding-top: 4rem; */
     padding-right: 2rem;
     flex-grow: 2;
 }

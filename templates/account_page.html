@@ -25,7 +25,7 @@
     </style>
 
     <script> var cash = {{ cash }} </script>
-    <script>
+    <!-- <script>
         var dates = {{ dates }}
         var formattedDates = []
         for (let i = 0; i < dates.length; i++) {
@@ -40,7 +40,7 @@
           ":"+formattedDates[i].getMinutes());
         }
     </script>
-    <script> var amounts = {{ amounts }} </script>
+    <script> var amounts = {{ amounts }} </script> -->
 
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
@@ -112,12 +112,7 @@
                 <button type='submit'>Submit</button>
             </form>
 
-            <div class="additional_info">
-                <label for="graphs">Additional Information:</label>
-                <div id="graphs">
-                    <canvas id="myChart"></canvas>
-                </div>
-            </div>
+            
 
             <a href="#" class="resources">More Resources</a>
         </div>
