@@ -37,7 +37,10 @@
         <nav class="menu_nav">
             <ul>
                 <li><a href="/{{session['username']}}/0">Home</a></li>
+                <li><a href="#">About Us</a></li>
                 <li><a href="#">Settings</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Our Sponsors</a></li>
             </ul>
         </nav>
         
@@ -74,14 +77,14 @@
                     </select>
                 </div>
                 <div class="goal_input">
-                    <label for="goal">Set Savings Goal:</label><br>
+                    <label for="goal">Set Savings Goal:</label><br><br>
                     <span>$</span>
                     <input type="number" id="goal">
                     <button id="set_goal" class="set_goal" type="button" onclick="update_goal();">Set Goal!</button>
                 </div>
 
                 <div class="progress">
-                    <label for="progress_bar">Progress: <span id="percent">{{var_percent}}</span>% towards goal of $<span id="saving_goal">{{var_goal}}</span> saved</label><br>  <!-- python code placeholders to display percentage -->
+                    <label for="progress_bar">Progress: $<span id="progress_num">{{var_progress}}</span> (<span id="percent">{{var_percent}}</span>%) towards goal of $<span id="saving_goal">{{var_goal}}</span> saved</label><br>  <!-- python code placeholders to display percentage -->
                     <progress id="progress_bar" value={{var_progress}} max={{var_goal}}>{{var_progress}}</progress>
                 </div>
 

@@ -208,8 +208,8 @@ header {
 }
 
 .left #myChart {
-  padding: 1rem;
-  background-color: rgb(185, 185, 241);
+  padding: 2rem;
+  background-color: rgb(217, 217, 247);
   border-radius: 20px;
   box-shadow: inset 1px 1px 5px rgb(105, 102, 102);
 }
