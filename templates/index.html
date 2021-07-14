@@ -21,6 +21,7 @@
     </style>
 
     <script> var cash = {{ cash }} </script>
+    <script> var container = {{container}} </script>
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
     <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
@@ -63,9 +64,9 @@
             <form action="/" class="user_selection" method="POST">
                 <label for="object">Choose an Object Container:</label>
                 <select name="object" id="object">
-                    <option value="House">House</option>
-                    <option value="Car">Car</option>
-                    <option value="Trolley">Trolley</option>
+                    <option value=0>Trolley</option>
+                    <option value=1>Car</option>
+                    <option value=2>House</option>
                 </select>
                 <label for="money_amount">Amount of Money:</label>
                 <div class="money_input">

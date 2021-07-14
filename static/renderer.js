@@ -18,7 +18,7 @@ objNumber20c = floor(cash*100 % 50 / 20)
 objNumber10c = floor(cash*100 % 20 / 10)
 objNumber5c = floor(cash*100 % 10/ 5)
 
-
+console.log(container)
 // total notes and coins
 totalNotesNumber = objNumber1000 + objNumber100 + objNumber50 + objNumber20 + objNumber10 + objNumber5
 totalCoinsNumber = objNumber50c + objNumber20c + objNumber10c + objNumber5c
@@ -50,6 +50,8 @@ const createScene = function () {
 
     const FileNames = ["100DollarStack.glb","100DollarNote.glb","50DollarNote.glb","20DollarNote.glb","10DollarNote.glb","5DollarNote.glb", "2DollarCoin.glb","1DollarCoin.glb","50CentCoin.glb","20CentCoin.glb","10CentCoin.glb","5CentCoin.glb"];
 
+    const ContainerFile = ["trolley.glb","car.glb"]
+
     var moneyArray = [];
 
     for (let l = 0; l < objNumber.length; l++) {
@@ -64,7 +66,7 @@ const createScene = function () {
     // Creates a camera
     var camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 4, 2, new BABYLON.Vector3(0, 0.5, 0));
     camera.attachControl(canvas, true);
-    camera.wheelPrecision = 100;
+    camera.wheelPrecision = 500;
     camera.minZ = 0;
 
     // Creates a light
@@ -75,13 +77,22 @@ const createScene = function () {
     shadowGenerator.useBlurExponentialShadowMap = true;
     shadowGenerator.usePercentageCloserFiltering = true;
 
-    objx = 0, objy = 0, objz = 0
+    // Load the container
+    BABYLON.SceneLoader.ImportMesh("", "/static/", ContainerFile[container], scene, function (model) {
+        model[0].position = new BABYLON.Vector3(-0.1, 0, 0);
+        model[0].rotation = new BABYLON.Vector3(0, -Math.PI / 2, 0);
+        // Generate shadow
+        shadowGenerator.addShadowCaster(model[0]);
+    });
+
     if (NRow > 4) {
         NRow = 4
     }
     if (NCol > 5) {
         NCol = 5
     }
+
+    objx = 0, objy = 0, objz = 0
 
     for (let l = 0; l < moneyArray.length; l++) {
         BABYLON.SceneLoader.ImportMesh("", "/static/", moneyArray[l][0], scene, function (model) {

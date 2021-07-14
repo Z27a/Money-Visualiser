@@ -40,10 +40,17 @@ class History(db.Model):
 
 @app.route("/", methods=['POST', 'GET'])
 def home():
-	money_amount = 1
+	money_amount = 0
+	container = 0
 	if request.method == 'POST':
-		money_amount = request.form['money_amount']
-	return render_template('index.html', cash = money_amount)
+		try:
+			money_amount = request.form['money_amount']
+		except:
+			money_amount = 0
+			print(money_amount)
+		container = request.form['object']
+
+	return render_template('index.html', cash = money_amount, container = container)
 
 @app.route("/login", methods=['POST', 'GET'])
 def login():
