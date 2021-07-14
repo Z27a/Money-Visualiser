@@ -50,13 +50,21 @@ const createScene = function () {
 
     const FileNames = ["100DollarStack.glb","100DollarNote.glb","50DollarNote.glb","20DollarNote.glb","10DollarNote.glb","5DollarNote.glb", "2DollarCoin.glb","1DollarCoin.glb","50CentCoin.glb","20CentCoin.glb","10CentCoin.glb","5CentCoin.glb"];
 
+    var moneyArray = [];
+
+    for (let l = 0; l < objNumber.length; l++) {
+        if (objNumber[l] > 0) {
+            moneyArray.push([FileNames[l], objNumber[l]])
+        }
+    }
+
     // Initialise scene
     var scene = new BABYLON.Scene(engine);
 
     // Creates a camera
     var camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 4, 3, new BABYLON.Vector3(0, 0, 0));
     camera.attachControl(canvas, true);
-    camera.wheelPrecision = 1000;
+    camera.wheelPrecision = 2000;
     camera.minZ = 0;
 
     // Creates a light
@@ -69,19 +77,24 @@ const createScene = function () {
 
     objx = 0, objz = 0
 
-    for (let l = 0; l < objNumber.length; l++) {
-        BABYLON.SceneLoader.ImportMesh("", "/static/", FileNames[l], scene, function (model) {
-            for (k = 0; k < objNumber[l]; k++) {
-                    NewObj = model[0].clone("NewObj")
+    for (let l = 0; l < moneyArray.length; l++) {
+        BABYLON.SceneLoader.ImportMesh("", "/static/", moneyArray[l][0], scene, function (model) {
+            for (k = 0; k < moneyArray[l][1]; k++) {
+                for (i = 1; i < model.length; i++) {
+                    model[i].setParent(null);
+                    var mesh = model[i];
+                    mesh.isVisible = false;
+                    var NewObj = mesh.createInstance("NewObj" + i);
                     NewObj.position = new BABYLON.Vector3(objx * 0.2, 1, objz * 0.1);
                     // Sets object to cast shadows
                     shadowGenerator.addShadowCaster(NewObj);
-                    objx++;
-                    if (objx > NRow) {
-                        objx = 0, objz++;
-                    }
+                }
+                model[0].dispose();
+                objx++;
+                if (objx > NRow) {
+                    objx = 0, objz++;
+                }
             }
-            model[0].dispose(); // Delete original object
         });
     }
 
