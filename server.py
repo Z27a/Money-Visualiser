@@ -75,7 +75,6 @@ def home():
 			money_amount = request.form['money_amount']
 		except:
 			money_amount = 0
-			print(money_amount)
 		container = request.form['object']
 
 	return render_template('index.html', cash = money_amount, container = container)
@@ -129,14 +128,15 @@ def account_page(usrname, amt=0):
         graphData = getGraphData()
         dates = graphData[0]
         amounts = graphData[1]
-        return render_template('account_page.html', cash=amount, dates=dates, amounts=amounts)
+        return render_template('account_page.html', cash=amount, dates=dates, amounts=amounts, container=obj)
     else:
         if usrname in session['username']:
-            amount = 1
+            amount = 0
+            obj = 0
             graphData = getGraphData()
             dates = graphData[0]
             amounts = graphData[1]
-            return render_template('account_page.html', amt=amt, cash=amount, dates=dates, amounts=amounts)
+            return render_template('account_page.html', amt=amt, cash=amount, dates=dates, amounts=amounts, container=obj)
         else:
             flash('You are not logged in', 'error')
             return redirect(url_for('login'))
@@ -152,14 +152,16 @@ def history(usrname):
 
 @app.route("/<usrname>_goal", methods=['GET', 'POST'])
 def goal(usrname):
-    money_amount = 1
+    money_amount = 0
+    container = 0
     if request.method == 'POST':
         money_amount = Users.query.filter_by(username=usrname).first().s_progress
+        container = request.form["object"]
     
     var_goal = Users.query.filter_by(username=usrname).first().s_goal
     var_progress = Users.query.filter_by(username=usrname).first().s_progress
     var_percent = format((var_progress / var_goal) * 100, ".2f")
-    return render_template('goal.html', var_goal=var_goal, var_progress=var_progress, var_percent=var_percent, cash=money_amount)
+    return render_template('goal.html', var_goal=var_goal, var_progress=var_progress, var_percent=var_percent, cash=money_amount, container=container)
 
 @app.route("/logout_<usrname>")
 def logout(usrname):

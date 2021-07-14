@@ -25,22 +25,7 @@
     </style>
 
     <script> var cash = {{ cash }} </script>
-    <!-- <script>
-        var dates = {{ dates }}
-        var formattedDates = []
-        for (let i = 0; i < dates.length; i++) {
-          formattedDates.push(new Date(dates[i] * 1000));
-        }
-        var goodDates = []
-        for (let i = 0; i < dates.length; i++) {
-          goodDates.push(formattedDates[i].getDate()+
-          "/"+(formattedDates[i].getMonth()+1)+
-          "/"+formattedDates[i].getFullYear()+
-          " "+formattedDates[i].getHours()+
-          ":"+formattedDates[i].getMinutes());
-        }
-    </script>
-    <script> var amounts = {{ amounts }} </script> -->
+    <script> var container = {{container}} </script>
 
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
@@ -100,9 +85,9 @@
                     <input name="title" type="text" id="title">
                     <label for="object">Choose an Object Container:</label>
                     <select name="object" id="object">
-                        <option value="House">House</option>
-                        <option value="Car">Car</option>
-                        <option value="Trolley">Trolley</option>
+                        <option value=0>Trolley</option>
+                        <option value=1>Car</option>
+                        <option value=2>House</option>
                     </select>
                     <label for="money_amount">Amount of Money:</label>
                     <div class="money_input">
