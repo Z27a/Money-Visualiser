@@ -201,14 +201,15 @@ header {
     align-items: center;
     margin: 2rem;
     margin-top: 4rem;
+    margin-right: 0;
     flex-grow: 5;
 }
 
 .placeholder {
     background-color: rgba(0, 0, 0, 70%);
     border-radius: 18px;
-    height: 24rem;
-    width: 30rem;
+    height: 65vh;
+    width: 45vw;
     box-shadow: 2px 3px 1px #007e15;
 }
 
@@ -292,6 +293,13 @@ header {
     border: none;
     border-radius: 62px;
     align-self: center;
+    opacity: 95%;
+    transition: opacity 300ms;
+}
+
+.user_selection button:hover {
+    opacity: 100%;
+    box-shadow: 0.5px 0.5px 2px gray;
 }
 
 .additional_info label {
@@ -311,4 +319,8 @@ header {
     margin-top: 15px;
     color: white;
     font-size: 0.75rem;
+}
+
+.right .resources:hover {
+  color: blue;
 }
