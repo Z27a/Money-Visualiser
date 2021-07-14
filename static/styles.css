@@ -209,7 +209,7 @@ nav {
   background-color: #36c9b5;
   padding: 2rem;
   border-radius: 20px;
-  box-shadow: 1px 1px 5px #394e55;
+  box-shadow: 1px 1px 4px -1px #394e55;
 }
 
 .user_selection {
