@@ -62,9 +62,9 @@ const createScene = function () {
     var scene = new BABYLON.Scene(engine);
 
     // Creates a camera
-    var camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 4, 3, new BABYLON.Vector3(0, 0, 0));
+    var camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 4, 2, new BABYLON.Vector3(0, 0.5, 0));
     camera.attachControl(canvas, true);
-    camera.wheelPrecision = 2000;
+    camera.wheelPrecision = 100;
     camera.minZ = 0;
 
     // Creates a light
@@ -75,7 +75,13 @@ const createScene = function () {
     shadowGenerator.useBlurExponentialShadowMap = true;
     shadowGenerator.usePercentageCloserFiltering = true;
 
-    objx = 0, objz = 0
+    objx = 0, objy = 0, objz = 0
+    if (NRow > 4) {
+        NRow = 4
+    }
+    if (NCol > 5) {
+        NCol = 5
+    }
 
     for (let l = 0; l < moneyArray.length; l++) {
         BABYLON.SceneLoader.ImportMesh("", "/static/", moneyArray[l][0], scene, function (model) {
@@ -85,16 +91,23 @@ const createScene = function () {
                     var mesh = model[i];
                     mesh.isVisible = false;
                     var NewObj = mesh.createInstance("NewObj" + i);
-                    NewObj.position = new BABYLON.Vector3(objx * 0.2, 1, objz * 0.1);
+                    NewObj.position = new BABYLON.Vector3(0.17*(objx - (NRow-1)/2), 0.5+0.02*(objy), -0.08*(objz - (NCol-1)/2));
                     // Sets object to cast shadows
                     shadowGenerator.addShadowCaster(NewObj);
                 }
-                model[0].dispose();
                 objx++;
-                if (objx > NRow) {
-                    objx = 0, objz++;
+                if (objx >= NRow) {
+                    objx = 0;
+                    if (objz >= NCol-1) {
+                        objz = 0;
+                        objy++;
+                    }
+                    else {
+                        objz++;
+                    }
                 }
             }
+            model[0].dispose(); // Delete original object
         });
     }
 
