@@ -40,6 +40,7 @@ header {
     transform: scale(1, 0);
     transform-origin: top;
     transition: transform 400ms ease-in-out;
+    z-index: 100;
   }
   
   .menu_nav ul {
@@ -191,10 +192,20 @@ header {
 
 .main {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 87.5%;
+    
+}
+
+/* left */
+
+.left {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 87.5%;
+  margin-right: 2rem;
+  margin-top: 2rem;
 }
 
 /* set savings goal section */
@@ -221,7 +232,7 @@ header {
 
 .goal_input span {
   position: absolute;
-  top: 2.4rem;
+  top: 2.3rem;
   left: 1rem;
   font-weight: bold;
   font-size: 1.4rem;
@@ -244,7 +255,8 @@ header {
   padding: 2rem 2.6rem;
   border-radius: 20px;
   box-shadow: inset 1px 1px 3px;
-  margin-top: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .progress label {
@@ -281,13 +293,15 @@ header {
 
 .money_input {
   position: relative;
+  height: 1.2rem;
   margin-bottom: 2rem;
 }
 
-.money_input span {
+.left .money_input span {
   position: absolute;
-  top: 0.8rem;
-  left: 1rem;
+  top: 0.75rem;
+  left: 0.9rem;
+  bottom: 5rem;
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -304,6 +318,11 @@ header {
 
 /* reset button */
 
+.btns {
+  margin-top: 6rem;
+  text-align: center;
+}
+
 .reset {
   color: white;
   font-weight: bold;
@@ -316,5 +335,97 @@ header {
 }
 
 button:hover {
-  box-shadow: 0.5px 0.5px 1px #354b2b;
+  box-shadow: 0.3px 0.3px 1px #354b2b;
+}
+
+.visualise {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: var(--button_color);
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  margin-left: 1.5rem;
+}
+
+.visualise:hover {
+  box-shadow: 0.3px 0.3px 1px #354b2b;
+}
+
+/* right */
+
+.right {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.placeholder {
+  background-color: rgba(0, 0, 0, 70%);
+  border-radius: 18px;
+  height: 55vh;
+  width: 35vw;
+  box-shadow: 2px 3px 1px #007e15;
+  margin: 3rem 0;
+}
+
+.money_input {
+  position: relative;
+}
+.money_input span {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.5rem;
+  font-weight: bold;
+}
+
+.obj_container {
+  position: absolute;
+  bottom: 12vh;
+  left: 69vw;
+}
+
+.obj_container select {
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+  height: 2rem;
+  width: 15rem;
+  border: 1.5px solid black;
+  border-radius: 10px;
+}
+
+.obj_container input {
+  height: 1.75rem;
+  width: 13.5rem;
+  border: 1.5px solid black;
+  border-radius: 10px;
+  padding-left: 1.25rem;
+}
+
+.obj_container label {
+  font-size: 0.75rem;
+  color: white;
+}
+
+.obj_container button {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  padding: 0.75rem 1.75rem;
+  margin: 1rem 0;
+  background-color: var(--button_color);
+  border: none;
+  border-radius: 62px;
+  align-self: center;
+  opacity: 95%;
+  transition: opacity 300ms;
+}
+
+.obj_container button:hover {
+  opacity: 100%;
+  box-shadow: 0.5px 0.5px 2px gray;
 }

@@ -10,6 +10,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">    
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <!-- style for babylonJs render canvas -->
+    <style>
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            touch-action: none;
+        }
+    </style>
+    
+        <script> var cash = {{ cash }} </script>
+        <script src="https://cdn.babylonjs.com/babylon.js"></script>
+        <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+        <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
 </head>
 <body>
     <script src="../static/script.js"></script>
@@ -48,28 +63,60 @@
     </header>
 
     <div class="main">
-        <div class="goal_input">
-            <label for="goal">Set Savings Goal:</label><br>
-            <span>$</span>
-            <input type="number" id="goal">
-            <button id="set_goal" class="set_goal" onclick="update_goal();">Set Goal!</button>
+        <div class="left">
+            <form class="user_selection" method='POST'>
+                <div class="obj_container">
+                    <label for="object">Choose an Object Container:</label><br>
+                    <select name="object" id="object">
+                        <option value="House">House</option>
+                        <option value="Car">Car</option>
+                        <option value="Trolley">Trolley</option>
+                    </select>
+                </div>
+                <div class="goal_input">
+                    <label for="goal">Set Savings Goal:</label><br>
+                    <span>$</span>
+                    <input type="number" id="goal">
+                    <button id="set_goal" class="set_goal" type="button" onclick="update_goal();">Set Goal!</button>
+                </div>
+
+                <div class="progress">
+                    <label for="progress_bar">Progress: <span id="percent">{{var_percent}}</span>% towards goal of $<span id="saving_goal">{{var_goal}}</span> saved</label><br>  <!-- python code placeholders to display percentage -->
+                    <progress id="progress_bar" value={{var_progress}} max={{var_goal}}>{{var_progress}}</progress>
+                </div>
+
+                <div class="add_to_progress">
+                    <p class="question">Saved More Money?</p>
+                    <div class="money_input">
+                        <span>$</span>
+                        <input name="money_amount" type="number" id="money_amount">
+                        <button id="update_progress" class="add_savings" type='button' onclick="update_progress1();">Add to Progress</button>
+                    </div>
+                </div>
+
+                <div class="btns">
+                    <button id="reset" class="reset" type="button" onclick="reset1();">Reset</button>
+                    <button class="visualise" type='submit'>Visualise!</button>
+                </div>
+            </form>
         </div>
 
-        <div class="progress">
-            <label for="progress_bar">Progress: <span id="percent">{{var_percent}}</span>% towards goal of $<span id="saving_goal">{{var_goal}}</span> saved</label><br>  <!-- python code placeholders to display percentage -->
-            <progress id="progress_bar" value={{var_progress}} max={{var_goal}}>{{var_progress}}</progress>
-        </div>
-
-        <div class="add_to_progress">
-            <p class="question">Saved More Money?</p>
-            <div class="money_input">
-                <span>$</span>
-                <input name="money_amount" type="number" id="money_amount">
-                <button id="update_progress"  class="add_savings" type='button' onclick="update_progress()">Add to Progress</button>
+        <div class="right">
+            <div class="placeholder">
+                <!-- babbylonJs render canvas -->
+                <canvas id="renderCanvas" touch-action="none"></canvas>
             </div>
+            <!-- <form action="/" class="user_selection" method="POST">
+                <label for="object">Choose an Object Container:</label>
+                <select name="object" id="object">
+                    <option value="House">House</option>
+                    <option value="Car">Car</option>
+                    <option value="Trolley">Trolley</option>
+                </select>
+                
+                <button type='submit'>Visualise!</button>
+            </form> -->
         </div>
-
-        <button id="reset" class="reset" type="button" onclick="reset()">Reset</button>
     </div>
 
 <script>
@@ -115,6 +162,8 @@
         });
      });
 </script>
+
+<script type="text/javascript" src="{{url_for('static', filename='renderer.js')}}"></script>
 
 </body>
 </html>

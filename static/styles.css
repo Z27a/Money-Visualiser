@@ -261,7 +261,7 @@ nav {
     box-shadow: 0.5px 0.5px 2px gray;
 }
 
-.additional_info label {
+/* .additional_info label {
     font-size: 0.75rem;
     color: white;
 }
@@ -272,7 +272,7 @@ nav {
     background-color: white;
     border: 1.5px solid black;
     border-radius: 10px;
-}
+} */
 
 .right .resources {
     margin-top: 15px;

@@ -21,10 +21,10 @@
 // }
 
 
-function update_progress() {
+function update_progress1() {
     document.getElementById('progress_bar').value = document.getElementById('progress_bar').value + parseInt(document.getElementById('money_amount').value)
-    new_percent = (document.getElementById('progress_bar').value / document.getElementById('progress_bar').max) * 100
-    document.getElementById('percent').textContent=new_percent;
+    new_percent = ((document.getElementById('progress_bar').value / document.getElementById('progress_bar').max) * 100).toFixed(2)
+    document.getElementById('percent').textContent=new_percent
 }
 
 function update_goal() {
@@ -36,8 +36,8 @@ function update_goal() {
     
 }
 
-function reset() {
+function reset1() {
     document.getElementById('percent').textContent=0;
     document.getElementById('saving_goal').textContent=1;
-    document.getElementById('progress_bar').value=0;
+    document.getElementById('progress_bar').value=0
 }

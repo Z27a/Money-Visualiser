@@ -139,12 +139,16 @@ def history(usrname):
     amounts=graphData[1]
     return render_template('history.html', hist=hist, dates=dates, amounts=amounts)
 
-@app.route("/<usrname>_goal")
+@app.route("/<usrname>_goal", methods=['GET', 'POST'])
 def goal(usrname):
+	money_amount = 1
+	if request.method == 'POST':
+		money_amount = Users.query.filter_by(username=usrname).first().s_progress
+	
 	var_goal = Users.query.filter_by(username=usrname).first().s_goal
 	var_progress = Users.query.filter_by(username=usrname).first().s_progress
 	var_percent = format((var_progress / var_goal) * 100, ".2f")
-	return render_template('goal.html', var_goal=var_goal, var_progress=var_progress, var_percent=var_percent)
+	return render_template('goal.html', var_goal=var_goal, var_progress=var_progress, var_percent=var_percent, cash=money_amount)
 
 @app.route("/logout_<usrname>")
 def logout(usrname):
