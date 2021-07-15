@@ -80,19 +80,47 @@ const createScene = function () {
     // Load the container
     BABYLON.SceneLoader.ImportMesh("", "/static/", ContainerFile[container], scene, function (model) {
         model[0].position = new BABYLON.Vector3(-0.1, 0, 0);
+        if (container == 2) {
+            model[0].position = new BABYLON.Vector3(0, 0.5, 0);
+        }
         model[0].rotation = new BABYLON.Vector3(0, -Math.PI / 2, 0);
         // Generate shadow
         shadowGenerator.addShadowCaster(model[0]);
     });
 
-    if (NRow > 4) {
-        NRow = 4
+    if (container == 1) {
+        if (NRow > 8) {
+            NRow = 8
+        }
+        if (NCol > 12) {
+            NCol = 12
+        }
     }
-    if (NCol > 5) {
-        NCol = 5
+    if (container == 2) {
+        if (NRow > 4) {
+            NRow = 4
+        }
+        if (NCol > 12) {
+            NCol = 12
+        }
     }
+    if (container == 0) {
+        if (NRow > 4) {
+            NRow = 4
+        }
+        if (NCol > 5) {
+            NCol = 5
+        }
+    }
+    
 
     objx = 0, objy = 0, objz = 0
+    if (container == 2 ) {
+        objy = 16.5
+    }
+    if (container == 1) {
+        objy = -15.5
+    }
 
     for (let l = 0; l < moneyArray.length; l++) {
         BABYLON.SceneLoader.ImportMesh("", "/static/", moneyArray[l][0], scene, function (model) {
