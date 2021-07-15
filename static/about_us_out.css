@@ -209,6 +209,10 @@ header {
     padding: 1rem;
 }
 
+.about_us .intro {
+  border-bottom: 2px solid black;
+}
+
 h1, h3 {
   align-self: center;
   text-decoration: underline;
