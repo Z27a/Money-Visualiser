@@ -1,4 +1,4 @@
-# Money-Visualiser
+# Cashview project files
 
 # How to run:
 1. Download and open project in an IDE. 
