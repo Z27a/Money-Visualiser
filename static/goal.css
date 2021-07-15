@@ -249,9 +249,9 @@ header {
 .goal_input button {
   color: white;
   font-weight: bold;
-  background-color: var(--button_color);
+  background-color: #00C805;
   padding: 1rem 1.75rem;
-  border: none;
+  border: 2px solid rgb(73, 73, 73);
   border-radius: 30px;
   margin-left: 1.25rem;
 }
@@ -259,16 +259,16 @@ header {
 /* progress section */
 
 .progress {
-  background-color: #d9d9f7;
+  background-color: rgb(44, 44, 44);
   padding: 2rem 2.6rem;
   border-radius: 20px;
-  box-shadow: inset 1px 1px 3px;
+  box-shadow: inset 1px 1px 2px rgb(148, 148, 148);
   margin-top: 3rem;
   margin-bottom: 2rem;
 }
 
 .progress label {
-  color: #000000;
+  color: #FFFFFF;
   font-size: 1.25rem;
   font-weight: bold;
 }
@@ -276,10 +276,6 @@ header {
 #progress_bar {
   width: 32rem;
   height: 1.8rem;
-}
-
-progress::-webkit-progress-value {
-  background: yellow;
 }
 
 /* saved more money section */
@@ -321,9 +317,9 @@ progress::-webkit-progress-value {
 .money_input button {
   color: white;
   font-weight: bold;
-  background-color: var(--button_color);
+  background-color: #00C805;
   padding: 1rem 1rem;
-  border: none;
+  border: 2px solid rgb(73, 73, 73);
   border-radius: 30px;
   margin-left: 1.2rem;
 }
@@ -338,15 +334,18 @@ progress::-webkit-progress-value {
 .reset {
   color: white;
   font-weight: bold;
-  background-color: rgb(78, 78, 78);
+  background-color: rgb(63, 63, 63);
   padding: 1rem 1.5rem;
-  border: none;
+  border: 2px solid rgb(63, 63, 63);
   border-radius: 30px;
   margin-left: 1.2rem;
   margin-bottom: 1rem;
+  opacity: 90%;
+  transition: opacity 300ms;
 }
 
 button:hover {
+  opacity: 100%;
   box-shadow: 0.3px 0.3px 1px #354b2b;
 }
 
@@ -354,9 +353,9 @@ button:hover {
   color: white;
   font-weight: bold;
   text-decoration: none;
-  background-color: var(--button_color);
+  background-color: #00C805;
   padding: 1rem 1.5rem;
-  border: none;
+  border: 2px solid rgb(73, 73, 73);
   border-radius: 30px;
   margin-left: 1.5rem;
 }
@@ -419,7 +418,7 @@ button:hover {
 
 .obj_container label {
   font-size: 0.75rem;
-  color: white;
+  color: black;
 }
 
 .obj_container button {
@@ -429,7 +428,7 @@ button:hover {
   text-align: center;
   padding: 0.75rem 1.75rem;
   margin: 1rem 0;
-  background-color: var(--button_color);
+  background-color: rgb(44, 44, 44);
   border: none;
   border-radius: 62px;
   align-self: center;
