@@ -128,7 +128,7 @@ const createScene = function () {
         // shadow opacity
         groundShadowLevel: 0.5,
     });
-    envBox.setMainColor(new BABYLON.Color3(0.0429, 0.3375, 0.0479));
+    envBox.setMainColor(new BABYLON.Color3.FromHexString('#b6fb84'));
 
     return scene;
 };

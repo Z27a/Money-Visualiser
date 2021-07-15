@@ -2,7 +2,7 @@ html, body {
     margin: 0;
     height: 100%;
     font-family: 'Roboto', 'Arial', 'sans-serif';
-    background-image: linear-gradient(to top right, #5BA72C 50%, #D8FF6A);
+    background-image: linear-gradient(to top right, #7ace46 50%, #D8FF6A);
     background-attachment: fixed;
     box-sizing: border-box;
 }
@@ -19,7 +19,7 @@ header {
     display: flex;
     justify-items: flex-start;
     align-items: center;
-    background-color: #99E16C;
+    background-color: #44cec2;
     height: 12.5%;
 }
 
@@ -34,7 +34,7 @@ header {
     text-align: center;
     top: 100%;
     left: 0;
-    background-color: rgba(143, 124, 255, 0.96);
+    background-color: rgba(246, 189, 40, 0.96);
     border-bottom-right-radius: 15px;
     width: 25%;
     transform: scale(1, 0);
@@ -257,7 +257,7 @@ header {
 /* progress section */
 
 .progress {
-  background-color: rgb(240, 226, 36);
+  background-color: #d9d9f7;
   padding: 2rem 2.6rem;
   border-radius: 20px;
   box-shadow: inset 1px 1px 3px;
@@ -266,7 +266,7 @@ header {
 }
 
 .progress label {
-  color: #406b56;
+  color: #000000;
   font-size: 1.25rem;
   font-weight: bold;
 }
@@ -274,6 +274,10 @@ header {
 #progress_bar {
   width: 32rem;
   height: 1.8rem;
+}
+
+progress::-webkit-progress-value {
+  background: yellow;
 }
 
 /* saved more money section */

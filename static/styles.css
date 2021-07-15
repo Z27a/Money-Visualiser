@@ -2,7 +2,7 @@ html, body {
     margin: 0;
     height: 100%;
     font-family: 'Roboto', 'Arial', 'sans-serif';
-    background-image: linear-gradient(to top right, #5BA72C 50%, #D8FF6A);
+    background-image: linear-gradient(to top right, #7ace46 50%, #D8FF6A);
     background-attachment: fixed;
     box-sizing: border-box;
 }
@@ -19,7 +19,7 @@ header {
     display: flex;
     justify-items: flex-start;
     align-items: center;
-    background-color: #99E16C;
+    background-color: #44cec2;
     height: 12.5%;
 }
 
@@ -34,7 +34,7 @@ nav {
     text-align: center;
     top: 100%;
     left: 0;
-    background-color: rgba(143, 124, 255, 0.88);
+    background-color: rgba(246, 189, 40, 0.96);
     border-bottom-right-radius: 15px;
     width: 25%;
     transform: scale(1, 0);
@@ -133,9 +133,9 @@ nav {
     color: white;
     text-decoration: none;
     padding: 0.75rem 1.25rem;
-    background-color: #855EF1;
+    background-color: var(--button_color);
     border-radius: 10px;
-    opacity: 90%;
+    opacity: 95%;
     transition: opacity 400ms;
 }
 
@@ -144,9 +144,9 @@ nav {
     text-decoration: none;
     font-weight: bold;
     padding: 0.75rem 1.25rem;
-    background-color: #263CFF;
+    background-color: var(--button_color);
     border-radius: 10px;
-    opacity: 80%;
+    opacity: 95%;
     transition: opacity 400ms;
 }
 
