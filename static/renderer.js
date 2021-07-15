@@ -50,7 +50,7 @@ const createScene = function () {
 
     const FileNames = ["100DollarStack.glb","100DollarNote.glb","50DollarNote.glb","20DollarNote.glb","10DollarNote.glb","5DollarNote.glb", "2DollarCoin.glb","1DollarCoin.glb","50CentCoin.glb","20CentCoin.glb","10CentCoin.glb","5CentCoin.glb"];
 
-    const ContainerFile = ["trolley.glb","car.glb"]
+    const ContainerFile = ["trolley.glb","car.glb","house.glb"]
 
     var moneyArray = [];
 
