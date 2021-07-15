@@ -121,6 +121,10 @@ nav {
     text-align: center;
 }
 
+.name img {
+  width: 15%;
+}
+
 /* main */
 
 .main {
@@ -190,20 +194,18 @@ input {
 /* right */
 
 .right {
-    flex-grow: 3;
+    flex-grow: 2;
+    width: 20%;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    background-image: url('https://image.ibb.co/cO9Lxq/login-bg.jpg');
-    background-size: cover;
 }
 
-.right .slogan{
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
+.right img{
+  width: 85%;
+  margin-right: 10rem;
 }
 
 .right p {

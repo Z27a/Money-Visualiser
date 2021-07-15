@@ -126,6 +126,8 @@ header {
 .profile-toggle-label img {
   background-color: #AAA;
   border-radius: 50%;
+  width: 42px;
+  height: 42px;
 }
 
 .profile_nav {
@@ -186,6 +188,10 @@ header {
 
 .profile-toggle:checked ~ .profile_nav a {
   opacity: 1;
+}
+
+.name img {
+  width: 15%;
 }
 
 /* main */

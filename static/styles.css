@@ -121,7 +121,12 @@ nav {
 }
 
 .login, .signup {
+    min-width: 3.4rem;
     margin-right: 1rem;
+}
+
+.login {
+  min-width: 2.8rem;
 }
 
 .login {
@@ -148,6 +153,10 @@ nav {
 .login:hover, .signup:hover {
     opacity: 100%;
     box-shadow: 0.1px 0.1px 2px #00630d;
+}
+
+.name img {
+  width: 20%;
 }
 
 /* main */
