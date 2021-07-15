@@ -40,5 +40,6 @@ function update_goal() {
 function reset1() {
     document.getElementById('percent').textContent=0;
     document.getElementById('saving_goal').textContent=1;
-    document.getElementById('progress_bar').value=0
+    document.getElementById('progress_bar').value=0;
+    document.getElementById('progress_num').textContent=0;
 }
