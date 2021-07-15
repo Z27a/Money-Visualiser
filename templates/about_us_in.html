@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../static/about_us_out.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script src="../static/script.js"></script>
+    <header>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+        
+        <nav class="menu_nav">
+            <ul>
+                <li><a href="/{{session['username']}}/0">Home</a></li>
+                <li><a href="/about_us/{{session['username']}}">About Us</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Our Sponsors</a></li>
+            </ul>
+        </nav>
+        
+
+        <div class="name">
+            <!-- <h1 class="money_visualiser" style="font-family: 'palatino'">CA$H VIEW</h1> -->
+            <img src="../static/cashview.png" alt="Cash View">
+        </div>
+        
+
+        <input type="checkbox" id="profile-toggle" class="profile-toggle">
+        <label for="profile-toggle" class="profile-toggle-label">
+            <img src="../static/profile.jpg" alt="Profile">
+        </label>
+        
+        <nav class="profile_nav">
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <li><a href="/{{session['username']}}_goal">Saving Goals</a></li>
+                <li><a href="/history_{{session['username']}}">History</a></li>
+                <li><a href="/logout_{{session['username']}}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="about_us">
+        <h1><Strong>About Us</Strong></h1>
+        <div class="intro">
+            <p>Financial literacy is a fundamental problem among the Australian population. With inflation against salaries in today’s market, many Australians, particularly the young, are struggling to meet basic expenses.</p>    
+            <p>Recently, the University of Western Australia revealed that approximately half of Australians are financially literate and this extends to less than half for the country's youth.</p>
+            <p>A key driving factor is overspending, often realised too late. In fact. more than 70% of Australian Households have admitted to engaging in some form of overspending.</p> 
+            <p>COVID19 has further exacerbated impulsive urges to spend. Incomes are down and staying at home has resulted in a variety of unnecessary and often detrimental expenditures fuelled by mental impacts of the pandemic. 
+            With some of the worst financial statistics in the history of the economy, COVID-19 has decimated the financial well-being of Australians.</p><br>
+        </div>
+        <h3 class="cashview_title">Cashview</h3>
+        <div class="cashview">
+            <p>This prompted us to build Cash View, a website to help people avoid overspending. We wanted to achieve this through a means which is accessible to everyone rather than the text and number-heavy programs that are currently found online.</p>
+            <p>Cash is a physical, tangible representation of value that is a direct association for most.
+                Cash View visualises your expenditure so you can gain a critical understanding of how much you are truly spending.</p>
+            <p>The sight of the significant cash amount can serve as a barrier to compulsive spending, cautioning users. By signing up for an account, you don’t have to worry about remembering your purchase as the website keeps them for your reference. To motivate savings we have also introduced a goal feature. Set a goal and track your progress, then see how much savings you have aggregated.</p>
+        </div>
+        
+        
+    </div>
+</body>
+</html>

@@ -203,6 +203,15 @@ def APIgoals(action=0, usrname=0, money=0):
 
     return "dummy text so the server doesn't have a fit"
 
+@app.route('/about_us')
+def about_us():
+    return render_template("about_us_out.html")
+
+@app.route('/about_us/<usrname>')
+def about_us1(usrname):
+    return render_template("about_us_in.html")
+
+
 
 if __name__ == '__main__':
     db.create_all()
