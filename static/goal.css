@@ -258,8 +258,46 @@ header {
 
 /* progress section */
 
+progress {
+  margin-top: 0.5rem;
+  -webkit-appearance: progress-bar;
+  box-sizing: border-box;
+
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+
+  width: 250px;
+  height: 20px;
+}
+
+progress[value]::-webkit-progress-bar {
+  height: 20px;
+  background-color: #eee;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  height: 20px;
+  background-image:
+	   -webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #f44, rgb(13, 235, 124));
+
+    border-radius: 30px; 
+}
+
+
 .progress {
-  background-color: rgb(44, 44, 44);
+  background-color: rgb(70, 70, 70);
   padding: 2rem 2.6rem;
   border-radius: 20px;
   box-shadow: inset 1px 1px 2px rgb(148, 148, 148);
@@ -271,10 +309,11 @@ header {
   color: #FFFFFF;
   font-size: 1.25rem;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 #progress_bar {
-  width: 32rem;
+  width: 31rem;
   height: 1.8rem;
 }
 
