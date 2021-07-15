@@ -41,6 +41,7 @@ header {
     transform: scale(1, 0);
     transform-origin: top;
     transition: transform 400ms ease-in-out;
+    z-index: 100;
   }
   
   .menu_nav ul {
@@ -204,17 +205,98 @@ header {
 .about_us {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 87.5%;
+    justify-content: flex-start;
+    height: 82.5%;
     padding: 1rem;
 }
 
-.about_us .intro {
-  border-bottom: 2px solid black;
+.headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-h1, h3 {
-  align-self: center;
+.headline h5 {
+  color: rgb(87, 87, 87);
+}
+.headline .slogan {
+  font-size: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  margin: none;
+}
+
+.headline .cashview {
+  color: rgb(87, 87, 87);
+  font-size: 1.2rem;
+}
+
+.wrapper {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.problem, .goal {
+  flex-grow: 1;
+  width: 50%;
+}
+
+.problem {
+  margin-left: 1.5rem;
+  padding: 2rem;
+  background-color: rgb(44, 44, 44);
+  opacity: 95%;
+  color: rgb(235, 235, 235);
+  text-align: center;
+  border-radius: 20px;
+  transition: opacity 400ms;
+}
+
+.problem a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 3rem;
+}
+
+.problem a:hover {
   text-decoration: underline;
 }
 
+.problem:hover {
+  opacity: 100%;
+  color: white;
+}
+
+.goal {
+
+  margin: 0 2rem;
+  padding: 2rem;
+  background-color: rgb(44, 44, 44);
+  opacity: 95%;
+  color: rgb(235, 235, 235);
+  text-align: center;
+  border-radius: 20px;
+  transition: opacity 400ms;
+}
+
+.goal a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 3rem;
+}
+
+.goal a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.goal:hover {
+  opacity: 100%;
+}

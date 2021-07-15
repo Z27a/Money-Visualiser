@@ -207,9 +207,9 @@ def APIgoals(action=0, usrname=0, money=0):
 def about_us():
     return render_template("about_us_out.html")
 
-@app.route('/about_us/<usrname>')
-def about_us1(usrname):
-    return render_template("about_us_in.html")
+# @app.route('/about_us/<usrname>')
+# def about_us1(usrname):
+#     return render_template("about_us_in.html")
 
 
 
