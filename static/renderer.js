@@ -92,8 +92,8 @@ const createScene = function () {
         if (NRow > 8) {
             NRow = 8
         }
-        if (NCol > 12) {
-            NCol = 12
+        if (NCol > 18) {
+            NCol = 18
         }
     }
     if (container == 2) {
