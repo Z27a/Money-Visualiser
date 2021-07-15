@@ -1,8 +1,9 @@
 html, body {
     margin: 0;
     height: 100%;
-    font-family: 'Roboto', 'Arial', 'sans-serif';
-    background-image: linear-gradient(to top right, #7ace46 50%, #D8FF6A);
+    font-family: 'Segoe UI', 'Arial', 'sans-serif';
+    background-color: #AFCF5B;
+    /* background-image: linear-gradient(to top right, #7ace46 50%, #D8FF6A); */
     background-attachment: fixed;
 }
 
@@ -18,8 +19,9 @@ header {
     display: flex;
     justify-items: flex-start;
     align-items: center;
-    background-color: #44cec2;
+    background-color: white;
     height: 12.5%;
+    box-shadow: 1px 1px 5px -2px;
 }
 
 header {
@@ -33,7 +35,7 @@ header {
     text-align: center;
     top: 100%;
     left: 0;
-    background-color: rgba(246, 189, 40, 0.96);
+    background-color: #00C805;
     border-bottom-right-radius: 15px;
     width: 25%;
     transform: scale(1, 0);
@@ -133,7 +135,7 @@ header {
   text-align: center;
   top: 100%;
   right: 0;
-  background-color: rgba(246, 189, 40, 0.96);
+  background-color: #00C805;
   border-bottom-left-radius: 15px;
   width: 25%;
   transform: scale(1, 0);
@@ -202,7 +204,8 @@ header {
 /* left */
 
 .left {
-  background-image: linear-gradient(to top left, #5fbd25, rgb(244, 255, 148));
+  background-color: #C3F53C;
+  /* background-image: linear-gradient(to top left, #5fbd25, rgb(244, 255, 148)); */
   padding: 1.5rem;
   margin-right: 2rem;
   flex-grow: 2;
@@ -211,11 +214,12 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: inset -1px 0px 5px rgb(83, 83, 83);
 }
 
 .left #myChart {
   padding: 2rem;
-  background-color: rgb(217, 217, 247);
+  background-color: white;
   border-radius: 20px;
   box-shadow: inset 1px 1px 5px rgb(105, 102, 102);
 }

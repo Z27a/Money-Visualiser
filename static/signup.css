@@ -2,7 +2,8 @@ html, body {
     margin: 0;
     height: 100%;
     font-family: 'Roboto', 'Arial', 'sans-serif';
-    background-image: linear-gradient(to top right, #7ace46 50%, #D8FF6A);
+    background-color: #C3F53C;
+    /* background-image: linear-gradient(to top right, #7ace46 50%, #D8FF6A); */
     background-attachment: fixed;
     box-sizing: border-box;
     display: relative;
@@ -20,8 +21,9 @@ header {
     display: flex;
     justify-items: flex-start;
     align-items: center;
-    background-color: #44cec2;
+    background-color: white;
     height: 12.5%;
+    box-shadow: 1px 1px 5px -2px;
 }
 
 header {
@@ -35,7 +37,7 @@ nav {
     text-align: center;
     top: 100%;
     left: 0;
-    background-color: rgba(246, 189, 40, 0.96);
+    background-color: #00C805;
     border-bottom-right-radius: 15px;
     width: 25%;
     transform: scale(1, 0);
@@ -133,12 +135,12 @@ nav {
 }
 
 .signup_title {
-  color: white;
+  color: black;
   font-weight: bold;
 }
 
 label {
-  color: white;
+  color: black;
   font-size: 0.75em;
 }
 
@@ -183,7 +185,7 @@ input {
 .left form button {
     align-self: center;
     color: white;
-    background-color: var(--button_color);
+    background-color: rgb(44, 44, 44);
     padding: 0.65rem 6.45rem;
     border: none;
     border-radius: 10px;
@@ -197,7 +199,7 @@ input {
 .redirect {
   margin-top: 1rem;
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.822);
+  color: black;
 }
 
 /* right */
