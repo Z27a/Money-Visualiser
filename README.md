@@ -8,3 +8,7 @@
 # Dummy Account:
 - username: omni
 - password: 12345
+
+# Devpost and Pitch: 
+https://devpost.com/software/cashview
+https://youtu.be/ofk-JuiqDSk
